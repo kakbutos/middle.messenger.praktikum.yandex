@@ -3,8 +3,8 @@ import { Profile } from '../../../pages/profile';
 import { Chat } from '../../../pages/chat';
 import { Reg } from '../../../pages/reg';
 import { Login } from '../../../pages/login';
-import { serverError } from '../../../pages/errors/serverError';
 import { NotFound } from '../../../pages/errors/notFound';
+import { serverError } from '../../../pages/errors/serverError';
 import { editProfile } from '../../../pages/editProfile';
 import { editPassword } from '../../../pages/editPassword';
 
