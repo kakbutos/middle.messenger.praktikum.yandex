@@ -13,23 +13,23 @@ npm run dev - запуск дев окружения
 
 ## Страницы проекта на Netlify
 
-Сайт - https://stunning-licorice-ff7bd8.netlify.app
+Сайт - https://dapper-semolina-4957ab.netlify.app
 
-[Профиль](https://stunning-licorice-ff7bd8.netlify.app/profile)
+[Профиль](https://dapper-semolina-4957ab.netlify.app/profile)
 
-[Чат](https://stunning-licorice-ff7bd8.netlify.app/chat)
+[Чат](https://dapper-semolina-4957ab.netlify.app/chat)
 
-[Регистрация](https://stunning-licorice-ff7bd8.netlify.app/reg)
+[Регистрация](https://dapper-semolina-4957ab.netlify.app/reg)
 
-[Авторизация](https://stunning-licorice-ff7bd8.netlify.app/login)
+[Авторизация](https://dapper-semolina-4957ab.netlify.app/login)
 
-[Ошибка 500](https://stunning-licorice-ff7bd8.netlify.app/serverError)
+[Ошибка 500](https://dapper-semolina-4957ab.netlify.app/serverError)
 
-[Смена пароля](https://stunning-licorice-ff7bd8.netlify.app/changePassword)
+[Смена пароля](https://dapper-semolina-4957ab.netlify.app/changePassword)
 
-[Редактирование профиля](https://stunning-licorice-ff7bd8.netlify.app/changeProfile)
+[Редактирование профиля](https://dapper-semolina-4957ab.netlify.app/changeProfile)
 
-[Страница не найдена](https://stunning-licorice-ff7bd8.netlify.app/notFound)
+[Страница не найдена](https://dapper-semolina-4957ab.netlify.app/notFound)
 
 ----
 
