@@ -4,6 +4,7 @@ import { tmpl } from './chat-header.tmpl';
 interface Props {
     icon: string;
     name: string;
+    iconName: string;
 }
 
 export const ChatHeader = (props: Props) => {

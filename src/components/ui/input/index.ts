@@ -8,6 +8,7 @@ interface InputProps {
     placeholder?: string;
     type: InputType;
     value?: string;
+    name: string;
 }
 
 export const Input = (props: InputProps) => {

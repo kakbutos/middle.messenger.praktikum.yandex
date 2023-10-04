@@ -1,7 +1,7 @@
 export const tmpl = `
     <div class="chat-msg">
-        <div class="chat-msg__list">
-            <div class="chat-msg__item from">
+        <ul class="chat-msg__list">
+            <li class="chat-msg__item from">
                 <span class="chat-msg__text">
                     Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
                     Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
@@ -10,9 +10,9 @@ export const tmpl = `
                     <span></span>
                     <time datetime="11:56">11:56</time>
                 </div>
-            </div>
+            </li>
 
-            <div class="chat-msg__item to">
+            <li class="chat-msg__item to">
                 <span class="chat-msg__text">
                     Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
                     Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
@@ -21,9 +21,9 @@ export const tmpl = `
                     <span></span>
                     <time datetime="11:56">11:56</time>
                 </div>
-            </div>
+            </li>
 
-            <div class="chat-msg__item from">
+            <li class="chat-msg__item from">
                 <span class="chat-msg__text">
                     Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
                     Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
@@ -32,13 +32,13 @@ export const tmpl = `
                     <span></span>
                     <time datetime="11:56">11:56</time>
                 </div>
-            </div>
+            </li>
 
-            <div class="chat-msg__item to">
+            <li class="chat-msg__item to">
                 <div class="chat-msg__images">
-                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/ba/29/5c/img-worlds-of-adventure.jpg?w=1200&h=-1&s=1">
-                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/ba/29/5c/img-worlds-of-adventure.jpg?w=1200&h=-1&s=1">
-                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/ba/29/5c/img-worlds-of-adventure.jpg?w=1200&h=-1&s=1">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/ba/29/5c/img-worlds-of-adventure.jpg?w=1200&h=-1&s=1" alt="img-worlds-of-adventure">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/ba/29/5c/img-worlds-of-adventure.jpg?w=1200&h=-1&s=1" alt="img-worlds-of-adventure">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/ba/29/5c/img-worlds-of-adventure.jpg?w=1200&h=-1&s=1" alt="img-worlds-of-adventure">
                 </div>
                 <span class="chat-msg__text">
                     Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
@@ -48,9 +48,9 @@ export const tmpl = `
                     <span></span>
                     <time datetime="11:56">11:56</time>
                 </div>
-            </div>
+            </li>
 
-            <div class="chat-msg__item to">
+            <li class="chat-msg__item to">
                 <span class="chat-msg__text">
                     Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
                     Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
@@ -59,7 +59,7 @@ export const tmpl = `
                     <span></span>
                     <time datetime="11:56">11:56</time>
                 </div>
-            </div>
-        </div>
+            </li>
+        </ul>
     </div>
 `;

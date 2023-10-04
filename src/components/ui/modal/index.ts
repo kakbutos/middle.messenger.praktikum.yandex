@@ -5,7 +5,6 @@ import { Link } from '../link';
 interface LinkProps {
     title?: string;
     children?: string;
-    textButton?: string;
     textLink: string;
     toLink: string;
     classNames?: string;
@@ -14,7 +13,6 @@ interface LinkProps {
 export const Modal = (props: LinkProps) => {
     const { title,
             children,
-            textButton,
             textLink,
             toLink,
             classNames
@@ -24,7 +22,6 @@ export const Modal = (props: LinkProps) => {
         classNames,
         title,
         children,
-        textButton,
         LinkElement: Link({ to: toLink, text: textLink, classNames: 'link link_blue' }),
     });
 };

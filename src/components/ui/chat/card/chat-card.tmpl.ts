@@ -1,5 +1,5 @@
 export const tmpl = `
-    <div class="chat-card">
+    <li class="chat-card">
         <div class="chat-card__icon"><img src="" alt="avatar"></div>
         <div class="chat-card__msg-content">
             <div class="msg-content__name chat__title">{{name}}</div>
@@ -9,5 +9,5 @@ export const tmpl = `
             <div class="msg-info__time">{{time}}</div>
             <div class="msg-info__count">{{countMsg}}</div>
         </div>
-    </div>
+    </li>
 `;

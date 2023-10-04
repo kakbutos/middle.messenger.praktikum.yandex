@@ -54,10 +54,6 @@
                 color: @dark;
             }
 
-            .profile__value {
-                color: @gray;
-            }
-
             .link_blue {
                 font-size: @font-size-13;
                 line-height: @line-height-13;
@@ -67,20 +63,16 @@
     }
 
     .profile-edit {
-        img {
+        &__img {
             margin-bottom: 100px;
-        }
-
-        .button {
-            margin-top: 60px;
-            min-width: 280px;
         }
     }
 
+    .profile-edit,
     .profile-edit-password {
         .button {
-            margin-top: 160px;
-            min-width: 280px;
+            margin: 60px auto 0 auto;
+            width: 280px;
         }
     }
 }

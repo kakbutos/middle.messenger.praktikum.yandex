@@ -3,5 +3,6 @@ export const tmpl = `
             placeholder="{{placeholder}}"
             type="{{type}}"
             value="{{value}}"
+            name="{{name}}"
     />
 `;

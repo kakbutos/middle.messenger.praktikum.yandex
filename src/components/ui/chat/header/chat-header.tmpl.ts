@@ -1,7 +1,7 @@
 export const tmpl = `
     <div class="chat-header">
         <div class="chat-header__icon">
-            <img src="{{icon}}" alt="#">
+            <img src="{{icon}}" alt="{{iconName}}">
         </div>
 
         <div class="chat-header__name chat__title">{{name}}</div>

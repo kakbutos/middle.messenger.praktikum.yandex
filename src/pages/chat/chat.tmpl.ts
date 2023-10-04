@@ -1,9 +1,9 @@
 export const tmpl = `
     <div class="chat">
-        <div class="chat__sidebar">
+        <aside class="chat__sidebar">
             {{{profileLink}}}
             {{{searchInput}}}
-            <div class="chat-card__list">
+            <ul class="chat-card__list">
                 {{{card}}}
                 {{{card}}}
                 {{{card}}}
@@ -18,13 +18,13 @@ export const tmpl = `
                 {{{card}}}
                 {{{card}}}
                 {{{card}}}
-            </div>
-        </div>
+            </ul>
+        </aside>
 
-        <div class="chat__content">
+        <main class="chat__content">
             {{{chatHeader}}}
             {{{chatList}}}
             {{{chatInput}}}
-        </div>
+        </main>
     </div>
 `;

@@ -1,38 +1,38 @@
 export const tmpl = `
-    <div class="profile profile-edit">
-        <img src="" alt="/">
+    <main class="profile profile-edit">
+        <img class="profile-edit__img" src="" alt="avatar">
 
         <form class="profile__list">
             <div class="profile__item">
-                <div class="profile__name">Почта</div>
-                <div class="profile__value">{{{email}}}</div>
+                <label class="profile__name">Почта</label>
+                {{{email}}}
             </div>
             <div class="profile__item">
-                <div class="profile__name">Логин</div>
-                <div class="profile__value">{{{login}}}</div>
+                <label class="profile__name">Логин</label>
+                {{{login}}}
             </div>
             <div class="profile__item">
-                <div class="profile__name">Имя</div>
-                <div class="profile__value">{{{firstName}}}</div>
+                <label class="profile__name">Имя</label>
+                {{{firstName}}}
             </div>
             <div class="profile__item">
-                <div class="profile__name">Фамилия</div>
-                <div class="profile__value">{{{lastName}}}</div>
+                <label class="profile__name">Фамилия</label>
+                {{{lastName}}}
             </div>
             <div class="profile__item">
-                <div class="profile__name">Имя в чате</div>
-                <div class="profile__value">{{{name}}}</div>
+                <label class="profile__name">Имя в чате</label>
+                {{{name}}}
             </div>
             <div class="profile__item">
-                <div class="profile__name">Телефон</div>
-                <div class="profile__value">{{{tel}}}</div>
+                <label class="profile__name">Телефон</label>
+                {{{tel}}}
             </div>
-        </form>
 
-        <button class="button button_blue">
-            <span class="button__text">Сохранить</span>
-        </button>
-    </div>
+            <button class="button button_blue" type="submit">
+                <span class="button__text">Сохранить</span>
+            </button>
+        </form>
+    </>
 
     {{{linkToHome}}}
 `;

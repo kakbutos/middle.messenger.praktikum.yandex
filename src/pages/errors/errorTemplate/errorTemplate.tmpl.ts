@@ -1,7 +1,7 @@
 export const tmpl = `
-    <div class="error-template">
+    <main class="error-template">
         <h1>{{error}}</h1>
         <span>{{text}}</span>
         {{{link}}}
-    </div>
+    </main>
 `;

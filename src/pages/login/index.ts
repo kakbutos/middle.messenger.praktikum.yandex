@@ -6,10 +6,13 @@ import { Modal } from '../../components/ui/modal';
 export const Login = () => {
     const modalChildrenTmpl = `
         <form class="auth-form">
-            <div class="auth-form__title">Логин</div>
-            ${Input({type: 'email', classNames: 'auth-form__input'})}
-            <div class="auth-form__title">Пароль</div>
-            ${Input({type: 'password', classNames: 'auth-form__input'})}
+            <label class="auth-form__title">Логин</label>
+            ${Input({type: 'text', classNames: 'auth-form__input', name: 'login'})}
+            <label class="auth-form__title">Пароль</label>
+            ${Input({type: 'password', classNames: 'auth-form__input', name: 'password'})}
+            <button type="submit" class="button button_blue">
+                <span class="button__text">Войти</span>
+            </button>
         </form>
     `;
 
@@ -17,7 +20,6 @@ export const Login = () => {
         modal: Modal({
             title: 'Вход',
             children: modalChildrenTmpl,
-            textButton: 'Авторизоваться',
             textLink: 'Нет аккаунта?',
             toLink: '/reg'
         })
