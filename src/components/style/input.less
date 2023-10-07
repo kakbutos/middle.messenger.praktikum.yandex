@@ -1,0 +1,45 @@
+:scope {
+    .input {
+        &_clear {
+            border: 0;
+            text-align: end;
+            color: inherit;
+
+            &:disabled {
+                background: none;
+            }
+
+            &::placeholder {
+                text-align: end;
+            }
+        }
+
+        &_gray {
+            border: none;
+            background-color: @shade-7;
+            border-radius: 5px;
+            height: 32px;
+            padding: 10px;
+
+            color: @dark;
+            font-size: @font-size-12;
+            font-weight: @font-weight-500;
+            line-height: @line-height-12;
+
+            &:hover,
+            &:focus {
+                border: 1px solid @shade-21;
+                padding: 9px;
+            }
+
+            &::placeholder {
+                color: @gray;
+                text-align: center;
+            }
+        }
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+}
