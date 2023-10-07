@@ -15,9 +15,12 @@
 
     /* Linting */
     "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "sourceMap": true,
+    "strictNullChecks": true
   },
   "include": ["src"]
 }
