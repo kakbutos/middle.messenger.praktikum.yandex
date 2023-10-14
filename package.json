@@ -19,7 +19,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:ts && npm run:lint:less"
+      "pre-commit": "npm run lint:ts && npm run lint:less"
     }
   },
   "devDependencies": {
