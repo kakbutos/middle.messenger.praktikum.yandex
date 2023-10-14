@@ -4,6 +4,6 @@ import { errorTemplate } from '../errorTemplate';
 
 export const serverError = () => {
     return renderTemplate(tmpl, {
-        error: errorTemplate({text: 'Мы уже фиксим', error: '500'})
+        error: errorTemplate({ text: 'Мы уже фиксим', error: '500' }),
     });
 };

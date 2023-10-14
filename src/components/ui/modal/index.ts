@@ -11,11 +11,12 @@ interface LinkProps {
 }
 
 export const Modal = (props: LinkProps) => {
-    const { title,
-            children,
-            textLink,
-            toLink,
-            classNames
+    const {
+        title,
+        children,
+        textLink,
+        toLink,
+        classNames,
     } = props;
 
     return renderTemplate(tmpl, {

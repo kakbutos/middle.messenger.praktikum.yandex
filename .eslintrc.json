@@ -1,0 +1,16 @@
+{
+    "extends": "airbnb",
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+        "indent": [2, 4],
+        "arrow-body-style": "off",
+        "import/prefer-default-export": "off",
+        "import/no-unresolved": "off",
+        "import/extensions": "off"
+    },
+    "root": true,
+    "env": {
+        "browser": true
+    }
+}

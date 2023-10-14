@@ -1,1 +1,1 @@
-export const tmpl = `{{{error}}}`;
+export const tmpl = '{{{error}}}';

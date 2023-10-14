@@ -7,9 +7,9 @@ export const Login = () => {
     const modalChildrenTmpl = `
         <form class="auth-form">
             <label class="auth-form__title">Логин</label>
-            ${Input({type: 'text', classNames: 'auth-form__input', name: 'login'})}
+            ${Input({ type: 'text', classNames: 'auth-form__input', name: 'login' })}
             <label class="auth-form__title">Пароль</label>
-            ${Input({type: 'password', classNames: 'auth-form__input', name: 'password'})}
+            ${Input({ type: 'password', classNames: 'auth-form__input', name: 'password' })}
             <button type="submit" class="button button_blue">
                 <span class="button__text">Войти</span>
             </button>
@@ -21,7 +21,7 @@ export const Login = () => {
             title: 'Вход',
             children: modalChildrenTmpl,
             textLink: 'Нет аккаунта?',
-            toLink: '/reg'
-        })
+            toLink: '/reg',
+        }),
     });
 };

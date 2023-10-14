@@ -4,6 +4,6 @@ import { errorTemplate } from '../errorTemplate';
 
 export const NotFound = () => {
     return renderTemplate(tmpl, {
-        error: errorTemplate({text: 'Не туда попали', error: '404'})
+        error: errorTemplate({ text: 'Не туда попали', error: '404' }),
     });
 };

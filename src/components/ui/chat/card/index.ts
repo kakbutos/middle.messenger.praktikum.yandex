@@ -10,5 +10,5 @@ interface Props {
 }
 
 export const ChatCard = (props: Props) => {
-    return  renderTemplate(tmpl, props);
+    return renderTemplate(tmpl, props);
 };

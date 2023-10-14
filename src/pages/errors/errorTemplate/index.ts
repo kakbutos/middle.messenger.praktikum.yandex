@@ -10,6 +10,6 @@ interface Props {
 export const errorTemplate = (props: Props) => {
     return renderTemplate(tmpl, {
         ...props,
-        link: Link({to: '/chat', text: 'Назад к чатам', classNames: 'link link_blue'})
+        link: Link({ to: '/chat', text: 'Назад к чатам', classNames: 'link link_blue' }),
     });
 };

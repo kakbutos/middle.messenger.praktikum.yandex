@@ -9,8 +9,10 @@ import { ChatInput } from '../../components/ui/chat/msg/chat-input';
 
 export const Chat = () => {
     return renderTemplate(tmpl, {
-        profileLink: Link({to: '/profile', text: 'Профиль', classNames: 'link link_gray'}),
-        searchInput: Input({type: 'text', classNames: 'input_gray', placeholder: 'Поиск', name: 'search'}),
+        profileLink: Link({ to: '/profile', text: 'Профиль', classNames: 'link link_gray' }),
+        searchInput: Input({
+            type: 'text', classNames: 'input_gray', placeholder: 'Поиск', name: 'search',
+        }),
         card: ChatCard({
             icon: '',
             name: 'Андрей',
@@ -18,8 +20,10 @@ export const Chat = () => {
             time: '10:59',
             countMsg: '21',
         }),
-        chatHeader: ChatHeader({icon: '', iconName: 'avatar', name: 'Вадим'}),
-        chatList: ChatMsg({text: 'Привет', time: '11:56', img: '', fromYouMsg: false}),
+        chatHeader: ChatHeader({ icon: '', iconName: 'avatar', name: 'Вадим' }),
+        chatList: ChatMsg({
+            text: 'Привет', time: '11:56', img: '', fromYouMsg: false,
+        }),
         chatInput: ChatInput,
     });
 };

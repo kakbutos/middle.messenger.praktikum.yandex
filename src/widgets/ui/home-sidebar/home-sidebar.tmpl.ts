@@ -1,1 +1,1 @@
-export const tmpl = `<div class="home-sidebar">{{{linkToHome}}}</div>`;
+export const tmpl = '<div class="home-sidebar">{{{linkToHome}}}</div>';

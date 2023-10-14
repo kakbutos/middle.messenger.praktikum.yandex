@@ -4,6 +4,8 @@ import { Input } from '../../../input';
 
 export const ChatInput = () => {
     return renderTemplate(tmpl, {
-        input: Input({type: 'text', placeholder: 'Сообщение', classNames: 'input_gray', name: 'message'})
+        input: Input({
+            type: 'text', placeholder: 'Сообщение', classNames: 'input_gray', name: 'message',
+        }),
     });
 };

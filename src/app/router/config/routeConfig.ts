@@ -20,4 +20,4 @@ export const ROUTES: Routes = {
     '/changePassword': editPassword(),
     '/changeProfile': editProfile(),
     '/notFound': NotFound(),
-}
+};

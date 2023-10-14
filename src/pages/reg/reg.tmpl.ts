@@ -1,1 +1,1 @@
-export const tmpl = `{{{modal}}}`;
+export const tmpl = '{{{modal}}}';

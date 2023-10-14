@@ -1,0 +1,13 @@
+{
+    "extends": "stylelint-config-standard-less",
+    "plugins": ["stylelint-less"],
+    "syntax": "less",
+    "rules": {
+        "at-rule-no-unknown": null,
+        "selector-class-pattern": null
+    },
+    "ignoreFiles": [
+        "dist/*",
+        "node_modules/*"
+    ]
+}
