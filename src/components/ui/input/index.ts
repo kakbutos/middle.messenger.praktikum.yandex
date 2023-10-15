@@ -1,5 +1,5 @@
 import { tmpl } from './input.tmpl';
-import { renderTemplate } from '../../../common/decorators/compileDecorator';
+import Block from '../../../common/block/Block';
 
 type InputType = 'email' | 'text' | 'number' | 'password' | 'tel';
 
@@ -11,6 +11,8 @@ interface InputProps {
     name: string;
 }
 
-export const Input = (props: InputProps) => {
-    return renderTemplate(tmpl, props);
-};
+export class Input extends Block<InputProps> {
+    render() {
+        return this.compile(tmpl, this.props);
+    }
+}

@@ -1,27 +1,23 @@
 import { tmpl } from './login.tmpl';
-import { renderTemplate } from '../../common/decorators/compileDecorator';
-import { Input } from '../../components/ui/input';
 import { Modal } from '../../components/ui/modal';
+import Block from '../../common/block/Block';
+import { ModalLoginContent } from '../../widgets/ui/modal-login-content';
 
-export const Login = () => {
-    const modalChildrenTmpl = `
-        <form class="auth-form">
-            <label class="auth-form__title">Логин</label>
-            ${Input({ type: 'text', classNames: 'auth-form__input', name: 'login' })}
-            <label class="auth-form__title">Пароль</label>
-            ${Input({ type: 'password', classNames: 'auth-form__input', name: 'password' })}
-            <button type="submit" class="button button_blue">
-                <span class="button__text">Войти</span>
-            </button>
-        </form>
-    `;
+export class Login extends Block {
+    constructor(props = {}) {
+        super(props);
+    }
 
-    return renderTemplate(tmpl, {
-        modal: Modal({
+    init() {
+        this.children.modal = new Modal({
             title: 'Вход',
-            children: modalChildrenTmpl,
+            children: new ModalLoginContent({}),
             textLink: 'Нет аккаунта?',
             toLink: '/reg',
-        }),
-    });
-};
+        });
+    }
+
+    render() {
+        return this.compile(tmpl, this.props);
+    }
+}

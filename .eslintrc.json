@@ -7,8 +7,11 @@
         "arrow-body-style": "off",
         "import/prefer-default-export": "off",
         "import/no-unresolved": "off",
-        "import/extensions": "off"
-    },
+        "import/extensions": "off",
+		"no-tabs": ["error", { "allowIndentationTabs": true }],
+		"no-underscore-dangle": "off",
+		"class-methods-use-this": "off"
+	},
     "root": true,
     "env": {
         "browser": true

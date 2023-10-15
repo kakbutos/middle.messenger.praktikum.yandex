@@ -1,5 +1,5 @@
-import { renderTemplate } from '../../../../common/decorators/compileDecorator';
 import { tmpl } from './chat-header.tmpl';
+import Block from '../../../../common/block/Block';
 
 interface Props {
     icon: string;
@@ -7,6 +7,8 @@ interface Props {
     iconName: string;
 }
 
-export const ChatHeader = (props: Props) => {
-    return renderTemplate(tmpl, props);
-};
+export class ChatHeader extends Block<Props> {
+    render() {
+        return this.compile(tmpl, this.props);
+    }
+}

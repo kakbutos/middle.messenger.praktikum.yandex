@@ -1,19 +1,23 @@
 import { tmpl } from './edit-password.tmpl';
-import { renderTemplate } from '../../common/decorators/compileDecorator';
 import { Input } from '../../components/ui/input';
-import { homeSidebar } from '../../widgets/ui/home-sidebar';
+import { HomeSidebar } from '../../widgets/ui/home-sidebar';
+import Block from '../../common/block/Block';
 
-export const editPassword = () => {
-    return renderTemplate(tmpl, {
-        linkToHome: homeSidebar,
-        oldPassword: Input({
+export class EditPassword extends Block {
+    init() {
+        this.children.linkToHome = new HomeSidebar({});
+        this.children.oldPassword = new Input({
             type: 'password', classNames: 'input_clear', value: '123', name: 'oldPassword',
-        }),
-        newPassword: Input({
+        });
+        this.children.newPassword = new Input({
             type: 'password', classNames: 'input_clear', value: '123', name: 'newPassword',
-        }),
-        repeatPassword: Input({
+        });
+        this.children.repeatPassword = new Input({
             type: 'password', classNames: 'input_clear', value: '123', name: 'repeatPassword',
-        }),
-    });
-};
+        });
+    }
+
+    render() {
+        return this.compile(tmpl, this.props);
+    }
+}

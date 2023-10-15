@@ -1,5 +1,5 @@
-import { renderTemplate } from '../../../../../common/decorators/compileDecorator';
 import { tmpl } from './chat-msg.tmpl';
+import Block from '../../../../../common/block/Block';
 
 interface Props {
     text: string;
@@ -8,6 +8,8 @@ interface Props {
     fromYouMsg: boolean;
 }
 
-export const ChatMsg = (props: Props) => {
-    return renderTemplate(tmpl, props);
-};
+export class ChatMsg extends Block<Props> {
+    render() {
+        return this.compile(tmpl, this.props);
+    }
+}

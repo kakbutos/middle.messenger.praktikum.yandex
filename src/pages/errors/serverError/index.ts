@@ -1,9 +1,17 @@
-import { renderTemplate } from '../../../common/decorators/compileDecorator';
 import { tmpl } from './serverError.tmpl';
-import { errorTemplate } from '../errorTemplate';
+import { ErrorTemplate } from '../errorTemplate';
+import Block from '../../../common/block/Block';
 
-export const serverError = () => {
-    return renderTemplate(tmpl, {
-        error: errorTemplate({ text: 'Мы уже фиксим', error: '500' }),
-    });
-};
+export class ServerError extends Block {
+    constructor() {
+        super({});
+    }
+
+    init() {
+        this.children.error = new ErrorTemplate({ text: 'Мы уже фиксим', error: '500' });
+    }
+
+    render() {
+        return this.compile(tmpl, this.props);
+    }
+}

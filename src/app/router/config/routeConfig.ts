@@ -4,20 +4,21 @@ import { Chat } from '../../../pages/chat';
 import { Reg } from '../../../pages/reg';
 import { Login } from '../../../pages/login';
 import { NotFound } from '../../../pages/errors/notFound';
-import { serverError } from '../../../pages/errors/serverError';
-import { editProfile } from '../../../pages/editProfile';
-import { editPassword } from '../../../pages/editPassword';
+import { ServerError } from '../../../pages/errors/serverError';
+import { EditProfile } from '../../../pages/editProfile';
+import { EditPassword } from '../../../pages/editPassword';
+import Block from '../../../common/block/Block';
 
-type Routes = Record<string, string>;
+type Routes = Record<string, Block>;
 
 export const ROUTES: Routes = {
-    '/': Main(),
-    '/profile': Profile(),
-    '/chat': Chat(),
-    '/reg': Reg(),
-    '/login': Login(),
-    '/serverError': serverError(),
-    '/changePassword': editPassword(),
-    '/changeProfile': editProfile(),
-    '/notFound': NotFound(),
+    '/': new Main(),
+    '/profile': new Profile(),
+    '/chat': new Chat({}),
+    '/reg': new Reg(),
+    '/login': new Login(),
+    '/serverError': new ServerError(),
+    '/changePassword': new EditPassword({}),
+    '/changeProfile': new EditProfile({}),
+    '/notFound': new NotFound(),
 };

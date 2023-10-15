@@ -1,5 +1,5 @@
-import { renderTemplate } from '../../../../common/decorators/compileDecorator';
 import { tmpl } from './chat-card.tmpl';
+import Block from '../../../../common/block/Block';
 
 interface Props {
     icon: string;
@@ -9,6 +9,8 @@ interface Props {
     countMsg: string;
 }
 
-export const ChatCard = (props: Props) => {
-    return renderTemplate(tmpl, props);
-};
+export class ChatCard extends Block<Props> {
+    render() {
+        return this.compile(tmpl, this.props);
+    }
+}
