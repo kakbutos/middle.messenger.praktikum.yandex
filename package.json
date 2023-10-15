@@ -8,8 +8,8 @@
     "dev": "vite --open",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint:ts": "eslint \"**/*.ts\" && tsc --noEmit",
-    "lint:ts:fix": "eslint \"**/*.ts\" --fix",
+    "lint:ts": "eslint \"**/*.{ts,js}\" && tsc --noEmit",
+    "lint:ts:fix": "eslint \"**/*.{ts.js}\" --fix",
     "lint:less": "npx stylelint \"**/*.less\"",
     "lint:less:fix": "npx stylelint \"**/*.less\" --fix",
     "prepare": "husky install"
@@ -37,8 +37,6 @@
   "dependencies": {
     "handlebars": "^4.7.8",
     "nanoid": "^3.0.0",
-	"express": "^4.18.2",
-	"vite": "^4.4.5",
-	"vite-plugin-handlebars": "^1.6.0"
+	"express": "^4.18.2"
   }
 }
