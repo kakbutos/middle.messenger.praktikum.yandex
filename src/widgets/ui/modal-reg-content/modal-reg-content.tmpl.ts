@@ -21,8 +21,6 @@ export const tmpl = `
             <label class="auth-form__title">Пароль (еще раз)</label>
             {{{passwordRepeat}}}
 
-            <button type="submit" class="button button_blue">
-                <span class="button__text">Зарегистрироваться</span>
-            </button>
+			{{{button}}}
         </form>
 `;

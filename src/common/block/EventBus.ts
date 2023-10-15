@@ -1,4 +1,3 @@
-/* eslint-disable-next-line no-unused-vars */
 type Handler<A extends any[] = unknown[]> = (...args: A) => void;
 type MapInterface<P> = P[keyof P]
 

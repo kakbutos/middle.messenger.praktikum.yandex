@@ -2,6 +2,8 @@ import { tmpl } from './edit-profile.tmpl';
 import { Input } from '../../components/ui/input';
 import { HomeSidebar } from '../../widgets/ui/home-sidebar';
 import Block from '../../common/block/Block';
+import { Button } from '../../components/ui/button';
+import { getFormData } from '../../common/form/getFormData';
 
 export class EditProfile extends Block {
     init() {
@@ -23,6 +25,9 @@ export class EditProfile extends Block {
         });
         this.children.tel = new Input({
             type: 'tel', classNames: 'input_clear', placeholder: '+7 (909) 967 30 30', name: 'phone',
+        });
+        this.children.button = new Button({
+            type: 'submit', text: 'Сохранить', classNames: 'button button_blue button-text_white', events: { click: getFormData },
         });
     }
 

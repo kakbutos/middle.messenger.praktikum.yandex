@@ -9,7 +9,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint:ts": "eslint \"**/*.{ts,js}\" && tsc --noEmit",
-    "lint:ts:fix": "eslint \"**/*.{ts.js}\" --fix",
+    "lint:ts:fix": "eslint \"**/*.{ts,js}\" --fix",
     "lint:less": "npx stylelint \"**/*.less\"",
     "lint:less:fix": "npx stylelint \"**/*.less\" --fix",
     "prepare": "husky install"

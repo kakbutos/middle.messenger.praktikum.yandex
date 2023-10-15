@@ -5,8 +5,8 @@ interface ButtonProps {
 	classNames?: string;
 	type?: 'button' | 'reset' | 'submit';
 	text: string;
-	events: {
-		click: () => void;
+	events?: {
+		click?: (...args: any) => void;
 	};
 }
 

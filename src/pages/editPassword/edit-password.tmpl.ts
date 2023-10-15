@@ -16,9 +16,7 @@ export const tmpl = `
                 {{{repeatPassword}}}
             </div>
 
-            <button class="button button_blue">
-                <span class="button__text">Сохранить</span>
-            </button>
+			{{{button}}}
         </form>
     </div>
 
