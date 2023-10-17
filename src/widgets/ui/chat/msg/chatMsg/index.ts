@@ -1,5 +1,5 @@
-import { tmpl } from './chat-msg.tmpl';
-import Block from '../../../../../common/block/Block';
+import { tmpl } from './chatMsg.tmpl';
+import Block from '@/common/block/block';
 
 interface Props {
     text: string;

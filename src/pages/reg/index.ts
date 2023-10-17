@@ -1,7 +1,7 @@
 import { tmpl } from './reg.tmpl';
-import { Modal } from '../../components/ui/modal';
-import Block from '../../common/block/Block';
-import { ModalRegContent } from '../../widgets/ui/modal-reg-content';
+import { Modal } from '@/components/ui/modal';
+import Block from '@/common/block/block';
+import { ModalRegContent } from '@/widgets/ui/modalRegContent';
 
 export class Reg extends Block {
     constructor(props = {}) {

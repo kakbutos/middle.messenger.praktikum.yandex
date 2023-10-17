@@ -1,6 +1,6 @@
 import { tmpl } from './modal.tmpl';
-import { Link } from '../link';
-import Block from '../../../common/block/Block';
+import { Link } from '@/components/ui/link';
+import Block from '@/common/block/block';
 
 interface LinkProps {
     title?: string;

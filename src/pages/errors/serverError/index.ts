@@ -1,6 +1,6 @@
 import { tmpl } from './serverError.tmpl';
-import { ErrorTemplate } from '../errorTemplate';
-import Block from '../../../common/block/Block';
+import { ErrorTemplate } from '@/pages/errors/errorTemplate';
+import Block from '@/common/block/block';
 
 export class ServerError extends Block {
     constructor() {

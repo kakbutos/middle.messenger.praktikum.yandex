@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import { nanoid } from 'nanoid';
 
-import { EventBus } from './EventBus';
+import { EventBus } from '@/common/eventBus/eventBus';
 
 // Нельзя создавать экземпляр данного класса
 class Block<P extends Record<string, any> = any> {
@@ -16,6 +16,8 @@ class Block<P extends Record<string, any> = any> {
 
     protected props: P;
 
+    private oldProps = { events: {} };
+
     /* eslint-disable-next-line no-use-before-define */
     public children: Record<string, Block>;
 
@@ -26,7 +28,7 @@ class Block<P extends Record<string, any> = any> {
     constructor(propsWithChildren: P) {
         const eventBus = new EventBus();
 
-        const { props, children } = this._getChildrenAndProps(propsWithChildren);
+        const { props, children } = this._getChildrenAndProps(propsWithChildren || {});
 
         this.children = children;
         this.props = this._makePropsProxy(props);
@@ -59,6 +61,16 @@ class Block<P extends Record<string, any> = any> {
         Object.keys(events).forEach((eventName) => {
             this._element?.addEventListener(eventName, events[eventName]);
         });
+    }
+
+    _removeEvents() {
+        const { events = {} } = this.oldProps as P & { events: Record<string, () => void> };
+
+        Object.keys(events).forEach((eventName) => {
+            this._element?.removeEventListener(eventName, events[eventName]);
+        });
+
+        this.oldProps.events = this.props.events;
     }
 
     _registerEvents(eventBus: EventBus) {
@@ -95,6 +107,8 @@ class Block<P extends Record<string, any> = any> {
     }
 
     protected componentDidUpdate(oldProps: P, newProps: P) {
+        this.oldProps.events = oldProps.events;
+
         return oldProps !== newProps;
     }
 
@@ -112,12 +126,14 @@ class Block<P extends Record<string, any> = any> {
 
     private _render() {
         const fragment = this.render();
+        const htmlElement = fragment.firstElementChild as HTMLElement;
 
         if (this._element) {
-			this._element!.innerHTML = '';
+            this._removeEvents();
+            this._element.replaceWith(htmlElement);
         }
 
-        this._element = Array.from(fragment.children)[0] as HTMLElement;
+        this._element = htmlElement;
 
         this._addEvents();
     }

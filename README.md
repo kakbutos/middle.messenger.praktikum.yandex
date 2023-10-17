@@ -3,10 +3,15 @@
 ## Запуск проекта
 
 ```
-npm install - устанавливаем зависимости
+npm install - устанавливает зависимости
 npm run start - билд проекта + раздача статики на express
 npm run build - билд проекта
 npm run dev - запуск дев окружения
+npm run lint:ts - Проверка ts файлов линтером(с учетом проверки типов)
+npm run lint:ts:fix - Исправление ts файлов линтером
+npm run lint:less - Проверка less файлов style линтером
+npm run lint:less:fix - Исправление less файлов style линтером
+npm run prepare - прекоммит хуки
 ```
 
 ----
@@ -51,9 +56,19 @@ src:
 ## Стили
 
 ```
-Пытался использовать методологию БЭМ
+Используется методология БЭМ
 ```
 
 ## Дизайн
 
 [Использовал предложенный макет](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1&mode=dev)
+
+## Линтеры
+
+```
+в eslint используется правила airbnb-base
+в stylelint используется правила stylelint-config-standard-less
+
+все папки и файлы имеют названия в формате CamelCase
+```
+

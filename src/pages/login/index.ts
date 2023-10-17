@@ -1,7 +1,7 @@
 import { tmpl } from './login.tmpl';
-import { Modal } from '../../components/ui/modal';
-import Block from '../../common/block/Block';
-import { ModalLoginContent } from '../../widgets/ui/modal-login-content';
+import { Modal } from '@/components/ui/modal';
+import Block from '@/common/block/block';
+import { ModalLoginContent } from '@/widgets/ui/modalLoginContent';
 
 export class Login extends Block {
     constructor(props = {}) {

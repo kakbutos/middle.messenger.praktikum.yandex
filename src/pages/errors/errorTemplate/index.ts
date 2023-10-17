@@ -1,6 +1,6 @@
 import { tmpl } from './errorTemplate.tmpl';
-import { Link } from '../../../components/ui/link';
-import Block from '../../../common/block/Block';
+import { Link } from '@/components/ui/link';
+import Block from '@/common/block/block';
 
 interface Props {
     error: string;

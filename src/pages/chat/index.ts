@@ -1,11 +1,11 @@
 import { tmpl } from './chat.tmpl';
-import { Link } from '../../components/ui/link';
-import { Input } from '../../components/ui/input';
-import { ChatCard } from '../../components/ui/chat/card';
-import { ChatHeader } from '../../components/ui/chat/header';
-import { ChatMsg } from '../../components/ui/chat/msg/chat-msg';
-import { ChatInput } from '../../components/ui/chat/msg/chat-input';
-import Block from '../../common/block/Block';
+import { Link } from '@/components/ui/link';
+import { Input } from '@/components/ui/input';
+import { ChatCard } from '@/widgets/ui/chat/card';
+import { ChatHeader } from '@/widgets/ui/chat/header';
+import { ChatMsg } from '@/widgets/ui/chat/msg/chatMsg';
+import { ChatInput } from '@/widgets/ui/chat/msg/chatInput';
+import Block from '@/common/block/block';
 
 export class Chat extends Block {
     init() {

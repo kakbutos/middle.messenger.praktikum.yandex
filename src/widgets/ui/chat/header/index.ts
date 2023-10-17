@@ -1,5 +1,5 @@
-import { tmpl } from './chat-header.tmpl';
-import Block from '../../../../common/block/Block';
+import { tmpl } from './chatHeader.tmpl';
+import Block from '@/common/block/block';
 
 interface Props {
     icon: string;

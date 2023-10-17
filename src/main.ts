@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const root: HTMLElement | null = document.getElementById('app');
 
     if (root) {
-        const component = ROUTES[window.location.pathname] || ROUTES['/notFound'];
+        const component = new ROUTES[window.location.pathname]() || new ROUTES['/notFound']();
 
         root.append(component.element!);
         component.dispatchComponentDidMount();

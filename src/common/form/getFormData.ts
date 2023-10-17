@@ -3,11 +3,15 @@ export const getFormData = (e: MouseEvent) => {
 
     const btnEl = e.target as HTMLElement;
     const form = btnEl!.closest('form') as HTMLFormElement;
-    const formData = new FormData(form);
+    const inputAll = form.querySelectorAll('input');
     const formDataObject: Record<string, string> = {};
 
-    formData.forEach((value, key) => {
-        formDataObject[key] = value.toString();
+    inputAll.forEach((input) => {
+        const { value, name } = input;
+
+        formDataObject[name] = value.toString();
+
+        input.dispatchEvent(new Event('blur'));
     });
 
     /* eslint-disable-next-line no-console */

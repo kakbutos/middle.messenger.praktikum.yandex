@@ -1,5 +1,5 @@
 import { tmpl } from './main.tmpl';
-import Block from '../../common/block/Block';
+import Block from '@/common/block/block';
 
 export class Main extends Block {
     constructor() {

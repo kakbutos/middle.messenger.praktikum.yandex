@@ -1,7 +1,7 @@
 import { tmpl } from './profile.tmpl';
-import { Link } from '../../components/ui/link';
-import { HomeSidebar } from '../../widgets/ui/home-sidebar';
-import Block from '../../common/block/Block';
+import { Link } from '@/components/ui/link';
+import { HomeSidebar } from '@/widgets/ui/homeSidebar';
+import Block from '@/common/block/block';
 
 export class Profile extends Block {
     constructor() {

@@ -1,5 +1,5 @@
-import { tmpl } from './chat-card.tmpl';
-import Block from '../../../../common/block/Block';
+import { tmpl } from './chatCard.tmpl';
+import Block from '@/common/block/block';
 
 interface Props {
     icon: string;

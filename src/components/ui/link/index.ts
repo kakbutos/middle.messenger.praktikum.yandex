@@ -1,5 +1,5 @@
 import { tmpl } from './link.tmpl';
-import Block from '../../../common/block/Block';
+import Block from '@/common/block/block';
 
 interface LinkProps {
     classNames?: string;

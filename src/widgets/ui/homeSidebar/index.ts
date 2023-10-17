@@ -1,6 +1,6 @@
-import { tmpl } from './home-sidebar.tmpl';
-import { Link } from '../../../components/ui/link';
-import Block from '../../../common/block/Block';
+import { tmpl } from './homeSidebar.tmpl';
+import { Link } from '@/components/ui/link';
+import Block from '@/common/block/block';
 
 export class HomeSidebar extends Block {
     init() {

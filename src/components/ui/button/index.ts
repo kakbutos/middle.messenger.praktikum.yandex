@@ -1,5 +1,5 @@
 import { tmpl } from './button.tmpl';
-import Block from '../../../common/block/Block';
+import Block from '@/common/block/block';
 
 interface ButtonProps {
 	classNames?: string;
