@@ -1,5 +1,7 @@
 import { METHODS, Options } from '.';
 
+type HTTPMethod = (url: string, options?: Options) => Promise<XMLHttpRequest | unknown>;
+
 const queryStringify = (data: undefined | Record<string, unknown>) => {
     if (typeof data !== 'object') {
         throw new Error('Data must be object');
@@ -13,19 +15,19 @@ const queryStringify = (data: undefined | Record<string, unknown>) => {
 };
 
 class HTTPTransport {
-    get = (url: string, options: Options = {}): Promise<XMLHttpRequest | unknown> => {
+    get: HTTPMethod = (url, options = {}) => {
         return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
     };
 
-    post = (url: string, options: Options = {}): Promise<XMLHttpRequest | unknown> => {
+    post: HTTPMethod = (url, options = {}) => {
         return this.request(url, { ...options, method: METHODS.POST }, options.timeout);
     };
 
-    put = (url: string, options: Options = {}): Promise<XMLHttpRequest | unknown> => {
+    put: HTTPMethod = (url, options = {}) => {
         return this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
     };
 
-    delete = (url: string, options: Options = {}): Promise<XMLHttpRequest | unknown> => {
+    delete: HTTPMethod = (url, options = {}) => {
         return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
     };
 

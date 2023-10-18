@@ -3,13 +3,13 @@ import Block from '@/common/block/block';
 
 type InputType = 'email' | 'text' | 'number' | 'password' | 'tel';
 
-interface InputProps {
+export interface InputProps {
     classNames?: string;
     placeholder?: string;
     type: InputType;
     value?: string;
     name: string;
-	pattern?: RegExp;
+	checkValidFunc?: (str: string) => string;
 	title?: string;
 	hasError?: string;
 	events?: {
@@ -18,11 +18,14 @@ interface InputProps {
 }
 
 export class Input extends Block<InputProps> {
-    public checkValid(func: (str: string) => string) {
+    public checkValid(func: (str: string) => string): string {
         const inputEl = this.getContent() as HTMLInputElement;
         const hasError = func(inputEl.value || '');
+        const newProps = { ...this.props, hasError, title: hasError };
 
-        this.setProps({ ...this.props, hasError, title: hasError });
+        this.setProps(newProps);
+
+        return hasError;
     }
 
     render() {

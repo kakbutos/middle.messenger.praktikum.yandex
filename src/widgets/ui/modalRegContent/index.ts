@@ -1,11 +1,11 @@
 import Block from '@/common/block/block';
-import { Input } from '@/components/ui/input';
 import { tmpl } from './modalRegContent.tmpl';
 import { Button } from '@/components/ui/button';
 import { getFormData } from '@/common/form/getFormData';
 import {
     emailReg, loginReg, nameReg, passwordReg, phoneReg,
 } from '@/common/form/regexp';
+import { InputWrapper } from '@/widgets/ui/inputControls';
 
 export class ModalRegContent extends Block {
     constructor(props = {}) {
@@ -13,45 +13,51 @@ export class ModalRegContent extends Block {
     }
 
     declare public children: {
-		address: Input,
-		login: Input,
-		name: Input,
-		lastName: Input,
-		tel: Input,
-		password: Input,
-		passwordRepeat: Input,
+		address: InputWrapper,
+		login: InputWrapper,
+		name: InputWrapper,
+		lastName: InputWrapper,
+		tel: InputWrapper,
+		password: InputWrapper,
+		passwordRepeat: InputWrapper,
 		button: Button
 	};
 
     init() {
-        const blurAddress = () => this.children.address.checkValid(emailReg);
-        const blurLogin = () => this.children.login.checkValid(loginReg);
-        const blurName = () => this.children.name.checkValid(nameReg);
-        const blurLastName = () => this.children.lastName.checkValid(nameReg);
-        const blurTel = () => this.children.tel.checkValid(phoneReg);
-        const blurPassword = () => this.children.password.checkValid(passwordReg);
-        const blurPasswordRepeat = () => this.children.passwordRepeat.checkValid(passwordReg);
-
-        this.children.address = new Input({
-            type: 'email', classNames: 'auth-form__input', name: 'email', events: { blur: blurAddress },
+        this.children.address = new InputWrapper({
+            input: {
+                type: 'email', classNames: 'auth-form__input', name: 'email', checkValidFunc: emailReg,
+            },
         });
-        this.children.login = new Input({
-            type: 'text', classNames: `auth-form__input ${this.props.error}`, name: 'login', events: { blur: blurLogin },
+        this.children.login = new InputWrapper({
+            input: {
+                type: 'text', classNames: 'auth-form__input', name: 'login', checkValidFunc: loginReg,
+            },
         });
-        this.children.name = new Input({
-            type: 'text', classNames: 'auth-form__input', name: 'first_name', events: { blur: blurName },
+        this.children.name = new InputWrapper({
+            input: {
+                type: 'text', classNames: 'auth-form__input', name: 'first_name', checkValidFunc: nameReg,
+            },
         });
-        this.children.lastName = new Input({
-            type: 'text', classNames: 'auth-form__input', name: 'second_name', events: { blur: blurLastName },
+        this.children.lastName = new InputWrapper({
+            input: {
+                type: 'text', classNames: 'auth-form__input', name: 'second_name', checkValidFunc: nameReg,
+            },
         });
-        this.children.tel = new Input({
-            type: 'tel', classNames: 'auth-form__input', name: 'phone', events: { blur: blurTel },
+        this.children.tel = new InputWrapper({
+            input: {
+                type: 'tel', classNames: 'auth-form__input', name: 'phone', checkValidFunc: phoneReg,
+            },
         });
-        this.children.password = new Input({
-            type: 'password', classNames: 'auth-form__input', name: 'password', events: { blur: blurPassword },
+        this.children.password = new InputWrapper({
+            input: {
+                type: 'password', classNames: 'auth-form__input', name: 'password', checkValidFunc: passwordReg,
+            },
         });
-        this.children.passwordRepeat = new Input({
-            type: 'password', classNames: 'auth-form__input', name: 'repeatPassword', events: { blur: blurPasswordRepeat },
+        this.children.passwordRepeat = new InputWrapper({
+            input: {
+                type: 'password', classNames: 'auth-form__input', name: 'repeatPassword', checkValidFunc: passwordReg,
+            },
         });
         this.children.button = new Button({
             type: 'submit', text: 'Зарегистрироваться', classNames: 'button button_blue button-text_white', events: { click: getFormData },

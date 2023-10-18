@@ -4,7 +4,6 @@ export const tmpl = `
             type="{{type}}"
             value="{{value}}"
             name="{{name}}"
-            pattern="{{pattern}}"
             title="{{title}}"
     />
 `;
