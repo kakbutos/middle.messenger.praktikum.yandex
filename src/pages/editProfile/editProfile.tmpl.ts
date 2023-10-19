@@ -28,9 +28,7 @@ export const tmpl = `
                 {{{tel}}}
             </div>
 
-            <button class="button button_blue" type="submit">
-                <span class="button__text">Сохранить</span>
-            </button>
+			{{{button}}}
         </form>
     </>
 

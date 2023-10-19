@@ -1,0 +1,62 @@
+:scope {
+	.input__wrapper {
+		position: relative;
+
+		&:has(.input__img_error) {
+			.input_error {
+				padding-right: 30px;
+			}
+		}
+
+		.input {
+			display: flex;
+			width: 100%;
+
+			&__img_error {
+				cursor: pointer;
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 16px;
+				height: 16px;
+
+				&:hover + .input__text_error {
+					display: flex;
+				}
+			}
+
+			// Нужно переопределить для отображения
+			/* stylelint-disable no-descending-specificity */
+			&__text_error {
+				position: absolute;
+				display: none;
+				bottom: 100%;
+				left: 50%;
+				transform: translateX(50%);
+				padding: 6px;
+				border-radius: 3px;
+				pointer-events: all;
+				background-color: red;
+				font-size: @font-size-11;
+				font-weight: @font-weight-500;
+				line-height: @line-height-11;
+				color: @white;
+			}
+			/* stylelint-enable no-descending-specificity */
+		}
+
+		&_clear {
+			&:has(.input__img_error) {
+				.input_error {
+					padding-right: 0;
+				}
+			}
+
+			.input {
+				&__img_error {
+					right: -20px;
+				}
+			}
+		}
+	}
+}

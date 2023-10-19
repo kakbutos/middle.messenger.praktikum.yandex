@@ -1,6 +1,12 @@
 import { tmpl } from './main.tmpl';
-import { renderTemplate } from '../../common/decorators/compileDecorator';
+import Block from '@/common/block/block';
 
-export const Main = () => {
-    return renderTemplate(tmpl);
-};
+export class Main extends Block {
+    constructor() {
+        super({});
+    }
+
+    render() {
+        return this.compile(tmpl, this.props);
+    }
+}

@@ -1,5 +1,5 @@
 import { tmpl } from './link.tmpl';
-import { renderTemplate } from '../../../common/decorators/compileDecorator';
+import Block from '@/common/block/block';
 
 interface LinkProps {
     classNames?: string;
@@ -7,6 +7,8 @@ interface LinkProps {
     text: string;
 }
 
-export const Link = (props: LinkProps) => {
-    return renderTemplate(tmpl, props);
-};
+export class Link extends Block<LinkProps> {
+    render() {
+        return this.compile(tmpl, this.props);
+    }
+}

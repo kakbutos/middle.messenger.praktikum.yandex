@@ -1,9 +1,17 @@
-import { renderTemplate } from '../../../common/decorators/compileDecorator';
 import { tmpl } from './notFound.tmpl';
-import { errorTemplate } from '../errorTemplate';
+import { ErrorTemplate } from '@/pages/errors/errorTemplate';
+import Block from '@/common/block/block';
 
-export const NotFound = () => {
-    return renderTemplate(tmpl, {
-        error: errorTemplate({text: 'Не туда попали', error: '404'})
-    });
-};
+export class NotFound extends Block {
+    constructor() {
+        super({});
+    }
+
+    init() {
+        this.children.error = new ErrorTemplate({ text: 'Не туда попали', error: '404' });
+    }
+
+    render() {
+        return this.compile(tmpl, this.props);
+    }
+}

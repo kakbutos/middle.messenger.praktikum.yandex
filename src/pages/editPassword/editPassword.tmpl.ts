@@ -1,6 +1,6 @@
 export const tmpl = `
     <main class="profile profile-edit-password">
-        <img src="" alt="avatar">
+        <img class="profile__img" src="" alt="avatar">
 
         <form class="profile__list">
             <div class="profile__item">
@@ -16,9 +16,7 @@ export const tmpl = `
                 {{{repeatPassword}}}
             </div>
 
-            <button class="button button_blue">
-                <span class="button__text">Сохранить</span>
-            </button>
+			{{{button}}}
         </form>
     </div>
 

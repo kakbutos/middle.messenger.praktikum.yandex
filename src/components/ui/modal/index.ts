@@ -1,27 +1,25 @@
 import { tmpl } from './modal.tmpl';
-import { renderTemplate } from '../../../common/decorators/compileDecorator';
-import { Link } from '../link';
+import { Link } from '@/components/ui/link';
+import Block from '@/common/block/block';
 
 interface LinkProps {
     title?: string;
-    children?: string;
+    children?: string | Block;
     textLink: string;
     toLink: string;
     classNames?: string;
 }
 
-export const Modal = (props: LinkProps) => {
-    const { title,
-            children,
-            textLink,
-            toLink,
-            classNames
-    } = props;
+export class Modal extends Block<LinkProps> {
+    init() {
+        this.children.LinkElement = new Link({
+            to: this.props.toLink,
+            text: this.props.textLink,
+            classNames: 'link link_blue',
+        });
+    }
 
-    return renderTemplate(tmpl, {
-        classNames,
-        title,
-        children,
-        LinkElement: Link({ to: toLink, text: textLink, classNames: 'link link_blue' }),
-    });
-};
+    render() {
+        return this.compile(tmpl, this.props);
+    }
+}
