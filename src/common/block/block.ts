@@ -19,7 +19,7 @@ class Block<P extends Record<string, any> = any> {
     private oldProps = { events: {} };
 
     /* eslint-disable-next-line no-use-before-define */
-    public children: Record<string, Block>;
+    public children: Record<string, Block | Block[]>;
 
     private eventBus: () => EventBus;
 
@@ -40,12 +40,17 @@ class Block<P extends Record<string, any> = any> {
         eventBus.emit(Block.EVENTS.INIT);
     }
 
-    _getChildrenAndProps(childrenAndProps: P): { props: P, children: Record<string, Block>} {
+    _getChildrenAndProps(childrenAndProps: P): {
+		props: P,
+		children: Record<string, Block | Block[]>
+	} {
         const props: Record<string, unknown> = {};
-        const children: Record<string, Block> = {};
+        const children: Record<string, Block | Block[]> = {};
 
         Object.entries(childrenAndProps).forEach(([key, value]) => {
-            if (value instanceof Block) {
+            if (Array.isArray(value) && value.every((item) => item instanceof Block)) {
+                children[key as string] = value;
+            } else if (value instanceof Block) {
                 children[key as string] = value;
             } else {
                 props[key] = value;
@@ -97,7 +102,13 @@ class Block<P extends Record<string, any> = any> {
     public dispatchComponentDidMount() {
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-        Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
+        Object.values(this.children).forEach((child) => {
+            if (Array.isArray(child)) {
+                child.forEach((block) => block.dispatchComponentDidMount());
+            } else {
+                child.dispatchComponentDidMount();
+            }
+        });
     }
 
     private _componentDidUpdate(oldProps: P, newProps: P) {
@@ -142,7 +153,11 @@ class Block<P extends Record<string, any> = any> {
         const contextAndStubs = { ...context };
 
         Object.entries(this.children).forEach(([name, component]) => {
-            contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+            if (Array.isArray(component)) {
+                contextAndStubs[name] = component.map((child) => `<div data-id="${child.id}"></div>`);
+            } else {
+                contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+            }
         });
 
         const html = Handlebars.compile(template)(contextAndStubs);
@@ -151,8 +166,7 @@ class Block<P extends Record<string, any> = any> {
 
         temp.innerHTML = html;
 
-        /* eslint-disable-next-line no-unused-vars */
-        Object.entries(this.children).forEach(([_, component]) => {
+        const replaceStub = (component: Block) => {
             const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
 
             if (!stub) {
@@ -162,6 +176,15 @@ class Block<P extends Record<string, any> = any> {
             component.getContent()?.append(...Array.from(stub.childNodes));
 
             stub.replaceWith(component.getContent()!);
+        };
+
+        /* eslint-disable-next-line no-unused-vars */
+        Object.entries(this.children).forEach(([_, component]) => {
+            if (Array.isArray(component)) {
+                component.forEach((comp) => replaceStub(comp));
+            } else {
+                replaceStub(component);
+            }
         });
 
         return temp.content;
