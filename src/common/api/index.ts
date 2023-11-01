@@ -5,6 +5,7 @@ export const METHODS = {
     GET: 'GET',
     POST: 'POST',
     PUT: 'PUT',
+    Patch: 'Patch',
     DELETE: 'DELETE',
 } as const;
 

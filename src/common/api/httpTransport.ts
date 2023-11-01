@@ -1,6 +1,6 @@
 import { METHODS, Options } from '.';
 
-type HTTPMethod = (url: string, options?: Options) => Promise<XMLHttpRequest | unknown>;
+type HTTPMethod = (path: string, options?: Options) => Promise<XMLHttpRequest | unknown>;
 
 const queryStringify = (data: undefined | Record<string, unknown>) => {
     if (typeof data !== 'object') {
@@ -15,20 +15,47 @@ const queryStringify = (data: undefined | Record<string, unknown>) => {
 };
 
 class HTTPTransport {
-    get: HTTPMethod = (url, options = {}) => {
-        return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
+    static API_URL = 'https://ya-praktikum.tech/api/v2';
+
+    protected endpoint: string;
+
+    constructor(endpoint: string) {
+        this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
+    }
+
+    get: HTTPMethod = (path, options = {}) => {
+        return this.request(`${this.endpoint}${path}`, {
+            ...options,
+            method: METHODS.GET,
+        }, options.timeout);
     };
 
-    post: HTTPMethod = (url, options = {}) => {
-        return this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+    post: HTTPMethod = (path, options = {}) => {
+        return this.request(`${this.endpoint}${path}`, {
+            ...options,
+            method: METHODS.POST,
+        }, options.timeout);
     };
 
-    put: HTTPMethod = (url, options = {}) => {
-        return this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+    put: HTTPMethod = (path, options = {}) => {
+        return this.request(`${this.endpoint}${path}`, {
+            ...options,
+            method: METHODS.PUT,
+        }, options.timeout);
     };
 
-    delete: HTTPMethod = (url, options = {}) => {
-        return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+    patch: HTTPMethod = (path, options = {}) => {
+        return this.request(`${this.endpoint}${path}`, {
+            ...options,
+            method: METHODS.Patch,
+        }, options.timeout);
+    };
+
+    delete: HTTPMethod = (path, options = {}) => {
+        return this.request(`${this.endpoint}${path}`, {
+            ...options,
+            method: METHODS.DELETE,
+        }, options.timeout);
     };
 
     request = (url: string, options: Options = {}, timeout = 5000) => {
@@ -64,10 +91,15 @@ class HTTPTransport {
             xhr.timeout = timeout;
             xhr.ontimeout = reject;
 
+            xhr.withCredentials = true;
+
             if (isGet || !data) {
                 xhr.send();
-            } else {
+            } else if (data instanceof FormData) {
                 xhr.send(data);
+            } else {
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify(data));
             }
         });
     };
