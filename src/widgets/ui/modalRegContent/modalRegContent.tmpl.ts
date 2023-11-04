@@ -18,9 +18,6 @@ export const tmpl = `
             <label class="auth-form__title">Пароль</label>
             {{{password}}}
 
-            <label class="auth-form__title">Пароль (еще раз)</label>
-            {{{passwordRepeat}}}
-
 			{{{button}}}
         </form>
 `;

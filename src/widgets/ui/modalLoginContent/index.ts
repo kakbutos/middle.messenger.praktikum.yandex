@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { getFormData } from '@/common/form/getFormData';
 import { loginReg, passwordReg } from '@/common/form/regexp';
 import { InputWrapper } from '@/widgets/ui/inputControls';
+import AuthController from '@/controllers/auth/authController';
+import { SignInData } from '@/types/auth/auth';
 
 export class ModalLoginContent extends Block {
     declare public children: {
@@ -13,6 +15,14 @@ export class ModalLoginContent extends Block {
 	};
 
     init() {
+        const login = async (e: MouseEvent) => {
+            const data = getFormData<SignInData>(e);
+
+            if (data) {
+                await AuthController.signin(data);
+            }
+        };
+
         this.children.loginInput = new InputWrapper({
             input: {
                 type: 'text', classNames: 'auth-form__input', name: 'login', checkValidFunc: loginReg,
@@ -24,7 +34,7 @@ export class ModalLoginContent extends Block {
             },
         });
         this.children.button = new Button({
-            type: 'submit', text: 'Войти', classNames: 'button button_blue button-text_white', events: { click: getFormData },
+            type: 'submit', text: 'Войти', classNames: 'button button_blue button-text_white', events: { click: login },
         });
     }
 
