@@ -1,5 +1,5 @@
 import { API } from '@/common/api/api';
-import { ChangeProfileData } from '@/types/profile/profile';
+import { ChangePasswordData, ChangeProfileData } from '@/types/profile/profile';
 
 export class ProfileApi extends API {
     constructor() {
@@ -12,5 +12,9 @@ export class ProfileApi extends API {
 
     changeAvatar(data: FormData) {
         return this.http.put('/profile/avatar', { data });
+    }
+
+    changePassword(data: ChangePasswordData) {
+        return this.http.put('/password', { data });
     }
 }

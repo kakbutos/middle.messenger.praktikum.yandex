@@ -1,31 +1,31 @@
 export const tmpl = `
     <main class="profile">
-        <img src="" alt="avatar">
-        <span class="profile__title">Иван</span>
+        {{{imageComponent}}}
+        <span class="profile__title">{{display_name}}</span>
         <ul class="profile__list">
             <li class="profile__item">
                 <span class="profile__name">Почта</span>
-                <span class="profile__value">pochta@yandex.ru</span>
+                <span class="profile__value">{{email}}</span>
             </li>
             <li class="profile__item">
                 <span class="profile__name">Логин</span>
-                <span class="profile__value">ivanivanov</span>
+                <span class="profile__value">{{login}}</span>
             </li>
             <li class="profile__item">
                 <span class="profile__name">Имя</span>
-                <span class="profile__value">Иван</span>
+                <span class="profile__value">{{first_name}}</span>
             </li>
             <li class="profile__item">
                 <span class="profile__name">Фамилия</span>
-                <span class="profile__value">Иванов</span>
+                <span class="profile__value">{{second_name}}</span>
             </li>
             <li class="profile__item">
                 <span class="profile__name">Имя в чате</span>
-                <span class="profile__value">Иван</span>
+                <span class="profile__value">{{display_name}}</span>
             </li>
             <li class="profile__item profile__item_underline-none">
                 <span class="profile__name">Телефон</span>
-                <span class="profile__value">+7 (909) 967 30 30</span>
+                <span class="profile__value">{{phone}}</span>
             </li>
         </ul>
 

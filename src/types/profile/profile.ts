@@ -6,3 +6,8 @@ export interface ChangeProfileData {
 	email: string;
 	phone: string;
 }
+
+export interface ChangePasswordData {
+	oldPassword: string;
+	newPassword: string;
+}

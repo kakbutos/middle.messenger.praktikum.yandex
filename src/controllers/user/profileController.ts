@@ -1,5 +1,5 @@
 import { ProfileApi } from '@/api/user/profileApi';
-import { ChangeProfileData } from '@/types/profile/profile';
+import { ChangePasswordData, ChangeProfileData } from '@/types/profile/profile';
 import store from '@/common/store/store';
 
 class ProfileController {
@@ -17,7 +17,18 @@ class ProfileController {
 
     async changeProfile(data: ChangeProfileData) {
         try {
-            await this.api.changeProfile(data);
+            const user = await this.api.changeProfile(data);
+
+            store.set('user', user);
+        } catch (error) {
+            /* eslint-disable-next-line no-console */
+            console.error(error);
+        }
+    }
+
+    async changePassword(data: ChangePasswordData) {
+        try {
+            await this.api.changePassword(data);
         } catch (error) {
             /* eslint-disable-next-line no-console */
             console.error(error);
