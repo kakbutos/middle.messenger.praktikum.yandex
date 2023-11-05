@@ -1,4 +1,5 @@
 import { METHODS, Options } from '.';
+import { API_URL } from '@/app/global';
 
 const queryStringify = (data: undefined | Record<string, unknown>) => {
     if (typeof data !== 'object') {
@@ -13,12 +14,10 @@ const queryStringify = (data: undefined | Record<string, unknown>) => {
 };
 
 class HTTPTransport {
-    static API_URL = 'https://ya-praktikum.tech/api/v2';
-
     protected endpoint: string;
 
     constructor(endpoint: string) {
-        this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
+        this.endpoint = `${API_URL}${endpoint}`;
     }
 
     get<Response>(path: string, options: Options = {}): Promise<Response> {
@@ -61,7 +60,9 @@ class HTTPTransport {
         options: Options = {},
         timeout = 5000,
     ): Promise<Response> {
-        const { headers = {}, method, data } = options;
+        const {
+            headers = {}, method, data, responseType = 'json',
+        } = options;
 
         return new Promise((resolve, reject) => {
             if (!method) {
@@ -89,18 +90,17 @@ class HTTPTransport {
                 }
             };
 
+            xhr.onabort = () => reject(new Error('abort'));
+            xhr.onerror = () => reject(new Error('network error'));
+            xhr.ontimeout = () => reject(new Error('timeout'));
+
             Object.keys(headers).forEach((key) => {
                 xhr.setRequestHeader(key, headers[key]);
             });
 
-            xhr.onabort = () => reject(new Error('abort'));
-            xhr.onerror = () => reject(new Error('network error'));
-
             xhr.timeout = timeout;
-            xhr.ontimeout = () => reject(new Error('timeout'));
-
             xhr.withCredentials = true;
-            xhr.responseType = 'json';
+            xhr.responseType = responseType;
 
             if (isGet || !data) {
                 xhr.send();

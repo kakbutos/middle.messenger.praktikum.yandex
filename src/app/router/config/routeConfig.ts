@@ -5,7 +5,7 @@ import { Reg } from '@/pages/reg';
 import { Login } from '@/pages/login';
 import { NotFound } from '@/pages/errors/notFound';
 import { ServerError } from '@/pages/errors/serverError';
-import { EditProfile } from '@/pages/editProfile';
+import { editProfile } from '@/pages/editProfile';
 import { EditPassword } from '@/pages/editPassword';
 import Block from '@/common/block/block';
 /* eslint-disable */
@@ -30,6 +30,6 @@ export const RoutesBlocks: Record<string, typeof Block> = {
     Login,
     ServerError,
     EditPassword,
-    EditProfile,
+    EditProfile: editProfile,
     NotFound,
 };

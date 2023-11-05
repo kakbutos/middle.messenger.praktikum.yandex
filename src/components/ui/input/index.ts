@@ -1,7 +1,7 @@
 import { tmpl } from './input.tmpl';
 import Block from '@/common/block/block';
 
-type InputType = 'email' | 'text' | 'number' | 'password' | 'tel';
+type InputType = 'email' | 'text' | 'number' | 'password' | 'tel' | 'file';
 
 export interface InputProps {
     classNames?: string;

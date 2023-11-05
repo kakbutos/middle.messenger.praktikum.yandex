@@ -4,13 +4,18 @@ export const getFormData = <T>(e: MouseEvent): T | null => {
     const btnEl = e.target as HTMLElement;
     const form = btnEl!.closest('form') as HTMLFormElement;
     const inputAll = form.querySelectorAll('input');
-    const formDataObject: Record<string, string> = {};
+    const formDataObject: Record<string, any> = {};
 
     let countErrors = 0;
     inputAll.forEach((input) => {
-        const { value, name } = input;
+        const { value, name, type } = input;
 
-        formDataObject[name] = value.toString();
+        if (input.files && type === 'file') {
+            const [file] = input.files;
+            formDataObject[name] = file;
+        } else {
+            formDataObject[name] = value.toString();
+        }
 
         input.dispatchEvent(new Event('blur'));
 

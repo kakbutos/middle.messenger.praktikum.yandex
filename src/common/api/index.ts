@@ -10,6 +10,7 @@ export const METHODS = {
 } as const;
 
 export interface Options {
+	responseType?: '' | 'arraybuffer' | 'blob' | 'document' | 'json' | 'text';
 	timeout?: number;
 	data?: any;
 	headers?: Record<string, string>;
