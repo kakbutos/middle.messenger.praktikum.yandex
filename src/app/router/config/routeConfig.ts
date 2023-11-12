@@ -1,6 +1,6 @@
 import { Main } from '@/pages/main';
 import { profile } from '@/pages/profile';
-import { Chat } from '@/pages/chat';
+import { chat } from '@/pages/chat';
 import { Reg } from '@/pages/reg';
 import { Login } from '@/pages/login';
 import { NotFound } from '@/pages/errors/notFound';
@@ -12,7 +12,7 @@ import Block from '@/common/block/block';
 export enum ROUTES {
 	Main = '/',
 	Profile = '/profile',
-	Chat = '/chat',
+	Chat = '/chats',
 	Reg = '/reg',
 	Login = '/login',
 	ServerError = '/serverError',
@@ -25,7 +25,7 @@ export enum ROUTES {
 export const RoutesBlocks: Record<string, typeof Block> = {
     Main,
     Profile: profile,
-    Chat,
+    Chat: chat,
     Reg,
     Login,
     ServerError,

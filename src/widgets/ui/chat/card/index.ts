@@ -1,15 +1,8 @@
 import { tmpl } from './chatCard.tmpl';
 import Block from '@/common/block/block';
+import { Chats } from '@/types/chats/chats';
 
-interface Props {
-    icon: string;
-    name: string;
-    text: string;
-    time: string;
-    countMsg: string;
-}
-
-export class ChatCard extends Block<Props> {
+export class ChatCard extends Block<Chats> {
     render() {
         return this.compile(tmpl, this.props);
     }

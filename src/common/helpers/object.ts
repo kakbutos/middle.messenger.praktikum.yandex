@@ -16,6 +16,10 @@ type PlainObject<T = unknown> = {
  * @returns {Indexed<T>} - Результирующий объединенный объект типа Indexed
  */
 export function merge(lhs: Indexed, rhs: Indexed): Indexed {
+    if (!lhs) {
+        return lhs;
+    }
+
     Object.keys(rhs).forEach((key) => {
         if (key in rhs) {
             if (typeof rhs[key] === 'object' && typeof lhs[key] === 'object') {

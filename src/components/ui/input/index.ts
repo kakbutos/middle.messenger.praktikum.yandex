@@ -28,6 +28,12 @@ export class Input extends Block<InputProps> {
         return hasError;
     }
 
+    get value(): string {
+        const inputEl = this.getContent() as HTMLInputElement;
+
+        return inputEl ? inputEl.value : this.props.value || '';
+    }
+
     render() {
         const inputEl = this.getContent() as HTMLInputElement;
 
