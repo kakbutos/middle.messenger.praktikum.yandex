@@ -15,6 +15,10 @@ export class ChatsApi extends API {
     }
 
     addUserInChat(data: { users: number[], chatId: number }) {
-        return this.http.post('/users', { data });
+        return this.http.put('/users', { data });
+    }
+
+    removeUserFromChat(data: { users: number[], chatId: number }) {
+        return this.http.delete('/users', { data });
     }
 }

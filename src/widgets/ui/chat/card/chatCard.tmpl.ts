@@ -1,7 +1,7 @@
 export const tmpl = `
-    <li class="chat-card">
+    <li class="chat-card {{#if isActive }}active{{/if}}">
         <div class="chat-card__icon">
-        	<img src="https://ya-praktikum.tech/api/v2/resources/{{avatar}}" alt="avatar">
+        	<img src="" alt="avatar">
         </div>
         <div class="chat-card__msg-content">
             <div class="msg-content__name chat__title">{{title}}</div>

@@ -25,3 +25,8 @@ export interface Chats {
 	unread_count: number;
 	last_message: LastMessage;
 }
+
+export interface ChatsStore {
+	list: Chats[];
+	activeIdChat?: number;
+}

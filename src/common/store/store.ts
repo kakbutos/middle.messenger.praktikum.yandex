@@ -2,11 +2,11 @@ import { EventBus } from '@/common/eventBus/eventBus';
 import { set } from '@/common/helpers/object';
 import Block from '@/common/block/block';
 import { User } from '@/types/auth/auth';
-import { Chats } from '@/types/chats/chats';
+import { ChatsStore } from '@/types/chats/chats';
 
 export interface State {
 	user?: User;
-	chats?: Chats[];
+	chats?: ChatsStore;
 }
 /* eslint-disable */
 export enum CustomStorageEvent {

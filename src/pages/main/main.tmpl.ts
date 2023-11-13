@@ -6,7 +6,7 @@ export const tmpl = `
                     <a class="link link_blue" href="/profile">Профиль</a>
                 </li>
                 <li>
-                    <a class="link link_blue" href="/chat">Чат</a>
+                    <a class="link link_blue" href="/chats">Чат</a>
                 </li>
                 <li>
                     <a class="link link_blue" href="/reg">Регистрация</a>

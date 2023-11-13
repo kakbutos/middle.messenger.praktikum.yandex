@@ -27,14 +27,12 @@ export class Chat extends Block {
 
         const openPopupForAddChat = () => {
             const actionModal = new ActionModal({
-                name: 'Логин',
+                name: 'Название чата',
                 action: addChat,
             });
 
             this.modal = new Modal({
                 title: 'Добавить чат',
-                textLink: '',
-                toLink: '',
                 children: actionModal,
             });
 
@@ -66,11 +64,7 @@ export class Chat extends Block {
             events: { click: openPopupForAddChat },
         });
 
-        this.children.chatHeader = new ChatHeader({
-            icon: '',
-            iconName: 'avatar',
-            name: 'Вадим',
-        });
+        this.children.chatHeader = new ChatHeader({});
         this.children.chatList = new ChatMsg({
             text: 'Привет',
             time: '11:56',

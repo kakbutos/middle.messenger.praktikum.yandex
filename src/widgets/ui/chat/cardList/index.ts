@@ -5,9 +5,13 @@ import { ChatCard } from '@/widgets/ui/chat/card';
 
 export class cardList extends Block {
     render() {
+        const changeChat = (id: number) => store.set('chats.activeIdChat', id);
         const { chats } = store.getState();
-        if (chats) {
-            this.children.cardList = chats.map((chatItem) => new ChatCard({ ...chatItem }));
+        if (chats && chats.list) {
+            this.children.cardList = chats.list.map((chatItem) => new ChatCard({
+                ...chatItem,
+                events: { click: () => changeChat(chatItem.id) },
+            }));
         }
 
         return this.compile(tmpl, this.children);

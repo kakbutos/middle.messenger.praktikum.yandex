@@ -18,7 +18,25 @@ class ChatsController {
         try {
             const chats = await this.api.getChats(data);
 
-            store.set('chats', chats);
+            store.set('chats.list', chats);
+        } catch (error) {
+            /* eslint-disable-next-line no-console */
+            console.error(error);
+        }
+    }
+
+    async addUserInChat(data: { users: number[], chatId: number }) {
+        try {
+            await this.api.addUserInChat(data);
+        } catch (error) {
+            /* eslint-disable-next-line no-console */
+            console.error(error);
+        }
+    }
+
+    async removeUserFromChat(data: { users: number[], chatId: number }) {
+        try {
+            await this.api.removeUserFromChat(data);
         } catch (error) {
             /* eslint-disable-next-line no-console */
             console.error(error);
