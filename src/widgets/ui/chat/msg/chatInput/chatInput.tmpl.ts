@@ -10,11 +10,6 @@ export const tmpl = `
             <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70093 16.0144C7.95752 17.7578 7.95123 20.5782 9.6869 22.3138C11.4226 24.0495 14.2429 24.0432 15.9863 22.2998L15.0435 21.357C13.8231 22.5774 11.8489 22.5818 10.6339 21.3668C9.41895 20.1518 9.42335 18.1776 10.6437 16.9572L9.70093 16.0144Z" fill="currentColor"/>
         </svg>
         {{{input}}}
-        <button class="chat-input__send">
-            <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect y="5.19995" width="11" height="1.6" fill="white"/>
-                <path d="M7 1L11 6L7 11" stroke="white" stroke-width="1.6"/>
-            </svg>
-        </button>
+        {{{sendMsgBtn}}}
     </div>
 `;

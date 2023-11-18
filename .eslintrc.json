@@ -12,7 +12,8 @@
 		"no-underscore-dangle": "off",
 		"class-methods-use-this": "off",
 		"no-unused-vars": ["error", { "args": "none" }],
-		"max-classes-per-file": "off"
+		"max-classes-per-file": "off",
+		"new-cap": "off"
 	},
     "root": true,
     "env": {

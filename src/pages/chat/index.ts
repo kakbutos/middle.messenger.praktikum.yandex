@@ -2,7 +2,6 @@ import { tmpl } from './chat.tmpl';
 import { Link } from '@/components/ui/link';
 import { Input } from '@/components/ui/input';
 import { ChatHeader } from '@/widgets/ui/chat/header';
-import { ChatMsg } from '@/widgets/ui/chat/msg/chatMsg';
 import { ChatInput } from '@/widgets/ui/chat/msg/chatInput';
 import Block from '@/common/block/block';
 import { Button } from '@/components/ui/button';
@@ -11,6 +10,7 @@ import { ActionModal } from '@/widgets/ui/chat/actionModal';
 import ChatsController from '@/controllers/chats/chatsController';
 import { State, withStore } from '@/common/store/store';
 import { CardList } from '@/widgets/ui/chat/cardList';
+import { chatListMsg } from '@/widgets/ui/chat/msg/chatListMsg';
 
 export class Chat extends Block {
     public modal: Modal | undefined;
@@ -65,12 +65,7 @@ export class Chat extends Block {
         });
 
         this.children.chatHeader = new ChatHeader({});
-        this.children.chatList = new ChatMsg({
-            text: 'Привет',
-            time: '11:56',
-            img: '',
-            fromYouMsg: false,
-        });
+        this.children.chatList = new chatListMsg({});
         this.children.chatInput = new ChatInput({});
     }
 

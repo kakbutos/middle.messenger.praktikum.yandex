@@ -2,10 +2,15 @@ import { tmpl } from './cardList.tmpl';
 import Block from '@/common/block/block';
 import store, { State, withStore } from '@/common/store/store';
 import { ChatCard } from '@/widgets/ui/chat/card';
+import ChatsController from '@/controllers/chats/chatsController';
 
 export class cardList extends Block {
     render() {
-        const changeChat = (id: number) => store.set('chats.activeIdChat', id);
+        const changeChat = async (id: number) => {
+            store.set('chats.activeIdChat', id);
+
+            await ChatsController.initChat();
+        };
         const { chats } = store.getState();
         if (chats && chats.list) {
             this.children.cardList = chats.list.map((chatItem) => new ChatCard({

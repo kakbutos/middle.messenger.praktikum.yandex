@@ -21,4 +21,8 @@ export class ChatsApi extends API {
     removeUserFromChat(data: { users: number[], chatId: number }) {
         return this.http.delete('/users', { data });
     }
+
+    getToken(id: number): Promise<{ token: string }> {
+        return this.http.post(`/token/${id}`);
+    }
 }
