@@ -35,15 +35,6 @@ class ProfileController {
         }
     }
 
-    async getUserById(id: number) {
-        try {
-            await this.api.getUserById(id);
-        } catch (error) {
-            /* eslint-disable-next-line no-console */
-            console.error(error);
-        }
-    }
-
     async getUserByLogin(data: { login: string }) {
         try {
             return await this.api.getUserByLogin(data);

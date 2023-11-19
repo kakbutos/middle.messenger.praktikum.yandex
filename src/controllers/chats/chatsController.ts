@@ -77,9 +77,9 @@ class ChatsController {
                 `${WS_CHATS_URL}/${userId}/${chatId}/${token}`,
             );
 
-            store.set('chats.chatSocket', WSClient);
-
             await WSClient.connect();
+            store.set('chats.chatSocket', WSClient, true);
+
             WSClient.getMessages('0');
         } catch (error) {
             /* eslint-disable-next-line no-console */

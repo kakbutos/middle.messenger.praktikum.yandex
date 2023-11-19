@@ -13,7 +13,8 @@
 		"class-methods-use-this": "off",
 		"no-unused-vars": ["error", { "args": "none" }],
 		"max-classes-per-file": "off",
-		"new-cap": "off"
+		"new-cap": "off",
+		"no-plusplus": "off"
 	},
     "root": true,
     "env": {

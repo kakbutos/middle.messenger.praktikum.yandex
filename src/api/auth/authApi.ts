@@ -10,7 +10,7 @@ export class AuthAPI extends API {
         return this.http.post('/signin', { data });
     }
 
-    signup(data: SignUpData): Promise<void> {
+    signup(data: SignUpData): Promise<{id: number}> {
         return this.http.post('/signup', { data });
     }
 

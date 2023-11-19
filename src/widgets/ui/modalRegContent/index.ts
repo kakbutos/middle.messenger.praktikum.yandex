@@ -8,7 +8,7 @@ import {
 import { InputWrapper } from '@/widgets/ui/inputControls';
 import AuthController from '@/controllers/auth/authController';
 import { SignUpData } from '@/types/auth/auth';
-import Router from '@/app/router/router.ts';
+import { State, withStore } from '@/common/store/store';
 
 export class ModalRegContent extends Block {
     constructor(props = {}) {
@@ -30,8 +30,7 @@ export class ModalRegContent extends Block {
             const data = getFormData<SignUpData>(e);
 
             if (data) {
-                await AuthController.signup(data);
-                Router.go('/chats');
+                await AuthController.registerUser(data);
             }
         };
 
@@ -74,3 +73,11 @@ export class ModalRegContent extends Block {
         return this.compile(tmpl, this.props);
     }
 }
+
+const mapStateToProps = (state: State) => {
+    return {
+        user: state?.user,
+    };
+};
+
+export const modalRegContent = withStore(mapStateToProps)(ModalRegContent);

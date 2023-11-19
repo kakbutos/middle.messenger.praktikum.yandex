@@ -1,5 +1,5 @@
 import { EventBus } from '@/common/eventBus/eventBus';
-import { set } from '@/common/helpers/object';
+import { set, setNestedValue } from '@/common/helpers/object';
 import Block from '@/common/block/block';
 import { User } from '@/types/auth/auth';
 import { ChatsStore } from '@/types/chats/chats';
@@ -20,8 +20,12 @@ class Store extends EventBus {
         return this.state;
     }
 
-    set(path: string, value: unknown) {
-        set(this.state, path, value);
+    set(path: string, value: unknown, replaceValue = false) {
+        if (replaceValue) {
+            setNestedValue(this.state, path, value);
+        } else {
+            set(this.state, path, value);
+        }
 
         this.emit(CustomStorageEvent.UpdateState, this.state);
     }

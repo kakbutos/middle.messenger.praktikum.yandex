@@ -21,6 +21,7 @@ export class ChatHeader extends Block {
                     if (isAction) {
                         this.modal = new Modal({
                             children: new ActionUserChat({}),
+                            closeIcon: true,
                         });
 
                         // @ts-ignore

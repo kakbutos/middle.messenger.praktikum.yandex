@@ -55,6 +55,36 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
     return merge(object as Indexed, result);
 }
 
+/**
+ * Устанавливает значение по указанному пути во вложенном объекте.
+ *
+ * @param object - Исходный объект.
+ * @param path - Путь к значению в виде строки через точки.
+ * @param value - Новое значение для установки.
+ * @returns - Измененный исходный объект.
+ */
+export const setNestedValue = (object: Indexed | unknown, path: string, value: unknown) => {
+    const keys = path.split('.');
+    let currentObject = object;
+
+    for (let i = 0; i < keys.length - 1; i++) {
+        const key = keys[i];
+        // @ts-ignore
+        if (typeof currentObject[key] !== 'object' || currentObject[key] === null) {
+            // @ts-ignore
+            currentObject[key] = {};
+        }
+        // @ts-ignore
+        currentObject = currentObject[key];
+    }
+
+    const lastKey = keys[keys.length - 1];
+    // @ts-ignore
+    currentObject[lastKey] = value;
+
+    return object;
+};
+
 export function isPlainObject(value: unknown): value is PlainObject {
     return typeof value === 'object'
 		&& value !== null
