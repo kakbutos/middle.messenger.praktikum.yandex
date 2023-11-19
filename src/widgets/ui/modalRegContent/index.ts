@@ -8,6 +8,7 @@ import {
 import { InputWrapper } from '@/widgets/ui/inputControls';
 import AuthController from '@/controllers/auth/authController';
 import { SignUpData } from '@/types/auth/auth';
+import Router from '@/app/router/router.ts';
 
 export class ModalRegContent extends Block {
     constructor(props = {}) {
@@ -30,6 +31,7 @@ export class ModalRegContent extends Block {
 
             if (data) {
                 await AuthController.signup(data);
+                Router.go('/chats');
             }
         };
 

@@ -32,6 +32,6 @@ export class ChatWS extends WSTransport {
     }
 
     private storeMessages(messages: any): void {
-        store.set('chats.messages', [...messages]);
+        store.set('chats.messages', messages);
     }
 }

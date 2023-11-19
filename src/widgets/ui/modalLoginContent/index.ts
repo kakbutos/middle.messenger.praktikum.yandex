@@ -6,6 +6,7 @@ import { loginReg, passwordReg } from '@/common/form/regexp';
 import { InputWrapper } from '@/widgets/ui/inputControls';
 import AuthController from '@/controllers/auth/authController';
 import { SignInData } from '@/types/auth/auth';
+import Router from '@/app/router/router';
 
 export class ModalLoginContent extends Block {
     declare public children: {
@@ -20,6 +21,7 @@ export class ModalLoginContent extends Block {
 
             if (data) {
                 await AuthController.signin(data);
+                Router.go('/chats');
             }
         };
 

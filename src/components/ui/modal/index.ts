@@ -2,15 +2,16 @@ import { tmpl } from './modal.tmpl';
 import { Link } from '@/components/ui/link';
 import Block from '@/common/block/block';
 
-interface LinkProps {
+interface ModalProps {
     title?: string;
     children?: string | Block;
     textLink?: string;
     toLink?: string;
     classNames?: string;
+	closeIcon?: boolean;
 }
 
-export class Modal extends Block<LinkProps> {
+export class Modal extends Block<ModalProps> {
     init() {
         if (this.props.toLink) {
             this.children.LinkElement = new Link({
@@ -19,6 +20,14 @@ export class Modal extends Block<LinkProps> {
                 classNames: 'link link_blue',
             });
         }
+
+        setTimeout(() => {
+            const closeIcon = this.element?.querySelector('.modal__close');
+
+            closeIcon?.addEventListener('click', () => {
+                this.remove();
+            });
+        }, 30);
     }
 
     render() {

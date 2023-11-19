@@ -2,6 +2,8 @@ import { tmpl } from './chatHeader.tmpl';
 import Block from '@/common/block/block';
 import { Modal } from '@/components/ui/modal';
 import { ActionUserChat } from '@/widgets/ui/chat/actionUserChat';
+import { State, withStore } from '@/common/store/store';
+import { Images } from '@/components/ui/images';
 
 export class ChatHeader extends Block {
     public modal: Modal | undefined;
@@ -30,7 +32,20 @@ export class ChatHeader extends Block {
         });
     }
 
+    init() {
+        this.children.avatarImgHeader = new Images({
+            path: this.props.user.avatar,
+            alt: 'avatar',
+        });
+    }
+
     render() {
         return this.compile(tmpl, this.props);
     }
 }
+
+const mapStateToProps = (state: State) => {
+    return { user: state.user };
+};
+
+export const chatHeader = withStore(mapStateToProps)(ChatHeader);

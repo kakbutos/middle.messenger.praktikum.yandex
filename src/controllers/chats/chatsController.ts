@@ -66,6 +66,10 @@ class ChatsController {
             const userId = user?.id;
             const chatId = chats?.activeIdChat;
 
+            if (chats?.chatSocket !== null) {
+                chats?.chatSocket?.close();
+            }
+
             await this.getToken(chatId);
             const token = chats?.token;
 

@@ -12,7 +12,7 @@ class ChatListMsg extends Block {
             }));
         }
 
-        return this.compile(tmpl, this.children);
+        return this.compile(tmpl, { ...this.children, isEmpty: !chats?.activeIdChat });
     }
 }
 

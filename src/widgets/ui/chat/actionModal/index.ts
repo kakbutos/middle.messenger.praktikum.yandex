@@ -28,6 +28,7 @@ export class ActionModal extends Block<Props> {
             type: 'text',
             placeholder: this.props.name,
             name: 'add',
+            classNames: 'input_gray',
         });
 
         this.children.buttonAction = new Button({

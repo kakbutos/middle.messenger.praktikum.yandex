@@ -6,10 +6,27 @@ export interface ImageProps {
 	classNames?: string;
 	path?: string;
 	src?: string;
-	alt: string;
+	alt?: string;
+	events?: {
+		error?: (...args: any) => void;
+	};
 }
 
 export class Images extends Block<ImageProps> {
+    init() {
+        const loadError = () => {
+            const imgEl = this.element as HTMLImageElement;
+
+            imgEl.src = '/icons/ghostImg.png';
+        };
+
+        this.setProps({
+            events: {
+                error: loadError,
+            },
+        });
+    }
+
     render() {
         return this.compile(tmpl, {
             ...this.props,

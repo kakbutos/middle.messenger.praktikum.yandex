@@ -1,7 +1,7 @@
 import { tmpl } from './chat.tmpl';
 import { Link } from '@/components/ui/link';
 import { Input } from '@/components/ui/input';
-import { ChatHeader } from '@/widgets/ui/chat/header';
+import { chatHeader } from '@/widgets/ui/chat/header';
 import { ChatInput } from '@/widgets/ui/chat/msg/chatInput';
 import Block from '@/common/block/block';
 import { Button } from '@/components/ui/button';
@@ -34,6 +34,7 @@ export class Chat extends Block {
             this.modal = new Modal({
                 title: 'Добавить чат',
                 children: actionModal,
+                closeIcon: true,
             });
 
             this.modal.show();
@@ -64,7 +65,7 @@ export class Chat extends Block {
             events: { click: openPopupForAddChat },
         });
 
-        this.children.chatHeader = new ChatHeader({});
+        this.children.chatHeader = new chatHeader({});
         this.children.chatList = new chatListMsg({});
         this.children.chatInput = new ChatInput({});
     }

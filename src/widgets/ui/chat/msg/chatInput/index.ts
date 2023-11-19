@@ -15,8 +15,10 @@ export class ChatInput extends Block {
         const blurInput = () => this.children.input.checkValid(messageReg);
         const sendMsg = () => {
             const { chats } = store.getState();
+            const input = this.children.input.element as HTMLInputElement;
 
             chats?.chatSocket?.sendMessage(this.children.input.value);
+            input.value = '';
         };
 
         this.children.sendMsgBtn = new Button({

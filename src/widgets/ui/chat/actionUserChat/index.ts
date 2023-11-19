@@ -17,41 +17,50 @@ export class ActionUserChat extends Block<
         const action = (e: MouseEvent) => {
             const el = e.target as HTMLElement;
             const type = el.getAttribute('data-type');
+            const typeRemove = type === 'remove';
 
-            if (type === 'add') {
-                const actionModal = new ActionModal({
-                    name: 'Логин пользователя',
-                    action: async (value: string) => {
-                        if (value) {
-                            // находим по логину id пользователя
-                            const userArray = await ProfileController.getUserByLogin({
-                                login: value,
-                            });
-                            // @ts-ignore
-                            const user = userArray?.filter((item: User) => item.login === value)[0];
-                            // добавляем в чат по айди
-                            const state = store.getState();
-                            const chatId = state.chats?.activeIdChat;
+            const actionModal = new ActionModal({
+                name: 'Логин пользователя',
+                action: async (value: string) => {
+                    if (value) {
+                        // находим по логину id пользователя
+                        const userArray = await ProfileController.getUserByLogin({
+                            login: value,
+                        });
+                        // @ts-ignore
+                        const user = userArray?.filter((item: User) => item.login === value)[0];
+                        // добавляем в чат по айди
+                        const state = store.getState();
+                        const chatId = state.chats?.activeIdChat;
 
-                            await ChatsController.addUserInChat({
-                                users: [user.id],
-                                // @ts-ignore
-                                chatId,
-                            });
-
-                            this.modal?.remove();
+                        if (!chatId) {
+                            return;
                         }
-                    },
-                });
 
-                this.modal = new Modal({
-                    title: 'Добавить пользователя в чат',
-                    children: actionModal,
-                });
+                        const data = {
+                            users: [user.id],
+                            chatId,
+                        };
 
-                this.props.closeModalAction.remove();
-                this.modal.show();
-            }
+                        if (typeRemove) {
+                            await ChatsController.removeUserFromChat(data);
+                        } else {
+                            await ChatsController.addUserInChat(data);
+                        }
+
+                        this.modal?.remove();
+                    }
+                },
+            });
+
+            this.modal = new Modal({
+                title: typeRemove ? 'Удалить пользователя из чата' : 'Добавить пользователя в чат',
+                children: actionModal,
+                closeIcon: true,
+            });
+
+            this.props.closeModalAction.remove();
+            this.modal.show();
         };
         super({ ...props, events: { click: action } });
     }

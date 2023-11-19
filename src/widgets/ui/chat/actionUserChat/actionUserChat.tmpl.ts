@@ -1,5 +1,5 @@
 export const tmpl = `
-	<ul>
+	<ul class="list-action-user">
 		<li data-type="add">
 			Добавить пользователя
 		</li>

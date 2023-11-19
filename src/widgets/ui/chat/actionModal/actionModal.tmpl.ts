@@ -1,6 +1,6 @@
 export const tmpl = `
-	<div>
-		<span>{{name}}</span>
+	<div class="modal-content">
+		<span class="modal-content__text">{{name}}</span>
 		{{{inputComponent}}}
 		{{{buttonAction}}}
 	</div>
