@@ -12,12 +12,12 @@ import Block from '@/common/block/block';
 export enum ROUTES {
 	Main = '/',
 	Profile = '/profile',
-	Chat = '/chats',
-	Reg = '/reg',
+	Chat = '/messenger',
+	Reg = '/sign-up',
 	Login = '/login',
 	ServerError = '/serverError',
 	EditPassword = '/changePassword',
-	EditProfile = '/changeProfile',
+	EditProfile = '/settings',
 	NotFound = '/notFound',
 }
 /* eslint-enable */

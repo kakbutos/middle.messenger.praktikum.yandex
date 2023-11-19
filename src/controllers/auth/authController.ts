@@ -54,7 +54,7 @@ class AuthController {
             const user = await profileApi.getUserById(userId);
             store.set('user', user);
 
-            Router.go('/chats');
+            Router.go('/messenger');
         } catch (error: any & { reason: string }) {
             const modal = new Modal({
                 title: error.reason,

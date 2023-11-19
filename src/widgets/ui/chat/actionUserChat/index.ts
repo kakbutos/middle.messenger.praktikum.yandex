@@ -46,6 +46,7 @@ export class ActionUserChat extends Block<
                             await ChatsController.removeUserFromChat(data);
                         } else {
                             await ChatsController.addUserInChat(data);
+                            await ChatsController.getUsersFromChat();
                         }
 
                         this.modal?.remove();

@@ -1,5 +1,6 @@
 import { API } from '@/common/api/api';
 import { Chats, GetChatsData } from '@/types/chats/chats';
+import { ChatsUser } from '@/types/profile/profile';
 
 export class ChatsApi extends API {
     constructor() {
@@ -24,5 +25,9 @@ export class ChatsApi extends API {
 
     getToken(id: number): Promise<{ token: string }> {
         return this.http.post(`/token/${id}`);
+    }
+
+    getUsersFromChat(chatId: number): Promise<ChatsUser[]> {
+        return this.http.get(`/${chatId}/users`);
     }
 }

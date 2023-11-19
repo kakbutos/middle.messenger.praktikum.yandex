@@ -6,7 +6,7 @@ export class HomeSidebar extends Block {
     init() {
         this.children.linkToHome = new Link({
             text: 'Вернуться',
-            to: '/chats',
+            to: '/messenger',
             classNames: 'link link_blue',
         });
     }

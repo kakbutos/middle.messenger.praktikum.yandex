@@ -1,4 +1,5 @@
 import { ChatWS } from '@/api/chats/chatWebsocket';
+import { ChatsUser } from '@/types/profile/profile';
 
 export interface GetChatsData {
 	offset: number;
@@ -45,4 +46,5 @@ export interface ChatsStore {
 	token?: string;
 	messages?: MessageContent[];
 	chatSocket?: ChatWS;
+	chatUsers?: ChatsUser[];
 }

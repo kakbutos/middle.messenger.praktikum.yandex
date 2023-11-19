@@ -1,6 +1,8 @@
 import { METHODS, Options } from '.';
 import { API_URL } from '@/app/global';
 
+type HTTPMethod = <R=unknown>(url: string, options?: Options) => Promise<R>;
+
 const queryStringify = (data: undefined | Record<string, unknown>) => {
     if (typeof data !== 'object') {
         throw new Error('Data must be object');
@@ -20,40 +22,46 @@ class HTTPTransport {
         this.endpoint = `${API_URL}${endpoint}`;
     }
 
-    get<Response>(path: string, options: Options = {}): Promise<Response> {
-        return this.request(`${this.endpoint}${path}`, {
+    get: HTTPMethod = (path: string, options: Options = {}) => {
+        let url = `${this.endpoint}${path}`;
+
+        if (options && !!options.data) {
+            url = `${url}${queryStringify(options.data)}`;
+        }
+
+        return this.request(url, {
             ...options,
             method: METHODS.GET,
         }, options.timeout);
-    }
+    };
 
-    post<Response = void>(path: string, options: Options = {}): Promise<Response> {
+    post: HTTPMethod = (path: string, options: Options = {}) => {
         return this.request(`${this.endpoint}${path}`, {
             ...options,
             method: METHODS.POST,
         }, options.timeout);
-    }
+    };
 
-    put<Response = void>(path: string, options: Options = {}): Promise<Response> {
+    put: HTTPMethod = (path: string, options: Options = {}) => {
         return this.request(`${this.endpoint}${path}`, {
             ...options,
             method: METHODS.PUT,
         }, options.timeout);
-    }
+    };
 
-    patch<Response = void>(path: string, options: Options = {}): Promise<Response> {
+    patch: HTTPMethod = (path: string, options: Options = {}) => {
         return this.request(`${this.endpoint}${path}`, {
             ...options,
             method: METHODS.Patch,
         }, options.timeout);
-    }
+    };
 
-    delete <Response>(path: string, options: Options = {}): Promise<Response> {
-        return this.request<Response>(`${this.endpoint}${path}`, {
+    delete: HTTPMethod = (path: string, options: Options = {}) => {
+        return this.request(`${this.endpoint}${path}`, {
             ...options,
             method: METHODS.DELETE,
         }, options.timeout);
-    }
+    };
 
     private request<Response>(
         url: string,
@@ -73,12 +81,7 @@ class HTTPTransport {
             const xhr = new XMLHttpRequest();
             const isGet = method === METHODS.GET;
 
-            xhr.open(
-                method,
-                isGet && !!data
-                    ? `${url}${queryStringify(data)}`
-                    : url,
-            );
+            xhr.open(method, url);
 
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === XMLHttpRequest.DONE) {

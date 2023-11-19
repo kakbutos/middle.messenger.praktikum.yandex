@@ -46,7 +46,10 @@ export class ChatHeader extends Block {
 }
 
 const mapStateToProps = (state: State) => {
-    return { user: state.user };
+    return {
+        user: state.user,
+        chatUsers: state.chats?.chatUsers,
+    };
 };
 
 export const chatHeader = withStore(mapStateToProps)(ChatHeader);

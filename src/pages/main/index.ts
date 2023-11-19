@@ -11,11 +11,11 @@ export class Main extends Block {
             },
             {
                 text: 'Чат',
-                to: '/chats',
+                to: '/messenger',
             },
             {
                 text: 'Регистрация',
-                to: '/reg',
+                to: '/sign-up',
             },
             {
                 text: 'Авторизация',
@@ -31,7 +31,7 @@ export class Main extends Block {
             },
             {
                 text: 'Редактирование профиля',
-                to: '/changeProfile',
+                to: '/settings',
             },
             {
                 text: 'Страница не найдена',

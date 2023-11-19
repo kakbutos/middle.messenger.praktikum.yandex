@@ -6,5 +6,8 @@ export const tmpl = `
 		<li data-type="remove">
 			Удалить пользователя
 		</li>
+		<li data-type="load">
+			Загрузить аватарку чата
+		</li>
 	</ul>
 `;

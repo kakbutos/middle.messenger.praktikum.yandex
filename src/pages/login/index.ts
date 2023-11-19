@@ -13,7 +13,7 @@ export class Login extends Block {
             title: 'Вход',
             children: new ModalLoginContent({}),
             textLink: 'Нет аккаунта?',
-            toLink: '/reg',
+            toLink: '/sign-up',
         });
     }
 

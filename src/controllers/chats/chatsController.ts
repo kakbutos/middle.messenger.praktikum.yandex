@@ -45,6 +45,21 @@ class ChatsController {
         }
     }
 
+    async getUsersFromChat() {
+        const { chats } = store.getState();
+        const chatId = chats?.activeIdChat;
+
+        try {
+            if (chatId) {
+                const chatsUser = await this.api.getUsersFromChat(chatId);
+                store.set('chats.chatUsers', chatsUser, true);
+            }
+        } catch (error) {
+            /* eslint-disable-next-line no-console */
+            console.error(error);
+        }
+    }
+
     async getToken(id?: number) {
         if (!id) {
             return;

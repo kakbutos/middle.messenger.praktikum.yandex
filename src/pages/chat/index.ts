@@ -19,7 +19,7 @@ export class Chat extends Block {
         const addChat = async (value: string) => {
             if (value) {
                 await ChatsController.createChat(value);
-                await ChatsController.getChats({ offset: 0, limit: 5 });
+                await ChatsController.getChats({ offset: 0, limit: 15 });
 
                 this.modal?.remove();
             }
@@ -41,7 +41,7 @@ export class Chat extends Block {
         };
 
         const loadChats = async () => {
-            await ChatsController.getChats({ offset: 0, limit: 5 });
+            await ChatsController.getChats({ offset: 0, limit: 15 });
         };
 
         loadChats().then(() => {});

@@ -4,7 +4,14 @@ export const tmpl = `
             {{{avatarImgHeader}}}
         </div>
 
-        <div class="chat-header__name chat__title">{{user.first_name}}</div>
+        <div class="chat-header__name chat__title">{{user.first_name}}.</div>
+
+		<ul class="chat-header__list">
+		Участники чата: 
+			{{#each chatUsers as | userChat |}}
+				<li>{{userChat.login}}</li>
+			{{/each}}
+		</ul>
 
         <div class="chat-header__action">
             <svg width="3" height="16" viewBox="0 0 3 16" fill="none" xmlns="http://www.w3.org/2000/svg">

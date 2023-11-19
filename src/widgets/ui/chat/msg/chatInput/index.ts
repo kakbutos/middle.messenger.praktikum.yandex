@@ -17,8 +17,10 @@ export class ChatInput extends Block {
             const { chats } = store.getState();
             const input = this.children.input.element as HTMLInputElement;
 
-            chats?.chatSocket?.sendMessage(this.children.input.value);
-            input.value = '';
+            if (input.value) {
+                chats?.chatSocket?.sendMessage(this.children.input.value);
+                input.value = '';
+            }
         };
 
         this.children.sendMsgBtn = new Button({

@@ -13,7 +13,7 @@ export class Profile extends Block {
         };
 
         this.children.imageComponent = new Images({ path: this.props.avatar, alt: 'avatar', classNames: 'profile__img' });
-        this.children.changeProfile = new Link({ text: 'Изменить данные', to: '/changeProfile', classNames: 'link link_blue' });
+        this.children.changeProfile = new Link({ text: 'Изменить данные', to: '/settings', classNames: 'link link_blue' });
         this.children.changePassword = new Link({ text: 'Изменить пароль', to: '/changePassword', classNames: 'link link_blue' });
         this.children.logout = new Link({ text: 'Выйти', classNames: 'link link_red', events: { click: logout } });
         this.children.linkToHome = new HomeSidebar({});

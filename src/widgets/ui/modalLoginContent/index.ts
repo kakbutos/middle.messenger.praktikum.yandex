@@ -21,7 +21,7 @@ export class ModalLoginContent extends Block {
 
             if (data) {
                 await AuthController.signin(data);
-                Router.go('/chats');
+                Router.go('/messenger');
             }
         };
 

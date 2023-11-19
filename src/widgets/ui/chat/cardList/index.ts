@@ -10,6 +10,7 @@ export class cardList extends Block {
             store.set('chats.activeIdChat', id);
 
             await ChatsController.initChat();
+            await ChatsController.getUsersFromChat();
         };
         const { chats } = store.getState();
 
