@@ -24,8 +24,8 @@ export class ChatHeader extends Block {
                             closeIcon: true,
                         });
 
-                        // @ts-ignore
-                        this.modal.children.children.setProps({ closeModalAction: this.modal });
+                        const block = this.modal.children.children as Block;
+                        block.setProps({ closeModalAction: this.modal });
                         this.modal.show(currentEl);
                     }
                 },

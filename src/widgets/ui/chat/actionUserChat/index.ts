@@ -26,8 +26,8 @@ export class ActionUserChat extends Block<
                         // находим по логину id пользователя
                         const userArray = await ProfileController.getUserByLogin({
                             login: value,
-                        });
-                        // @ts-ignore
+                        }) as User[];
+
                         const user = userArray?.filter((item: User) => item.login === value)[0];
                         // добавляем в чат по айди
                         const state = store.getState();

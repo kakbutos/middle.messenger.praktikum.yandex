@@ -63,23 +63,21 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
  * @param value - Новое значение для установки.
  * @returns - Измененный исходный объект.
  */
-export const setNestedValue = (object: Indexed | unknown, path: string, value: unknown) => {
+export const setNestedValue = (object: Indexed, path: string, value: unknown) => {
     const keys = path.split('.');
     let currentObject = object;
 
     for (let i = 0; i < keys.length - 1; i++) {
         const key = keys[i];
-        // @ts-ignore
         if (typeof currentObject[key] !== 'object' || currentObject[key] === null) {
-            // @ts-ignore
             currentObject[key] = {};
         }
-        // @ts-ignore
+
         currentObject = currentObject[key];
     }
 
     const lastKey = keys[keys.length - 1];
-    // @ts-ignore
+
     currentObject[lastKey] = value;
 
     return object;

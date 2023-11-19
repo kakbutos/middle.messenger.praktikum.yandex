@@ -14,6 +14,13 @@ import { ChangeProfileData } from '@/types/profile/profile';
 import { Images } from '@/components/ui/images';
 
 export class EditProfile extends Block {
+    declare public children: {
+		avatarImg: Images;
+		linkToHome: HomeSidebar;
+		buttonFile: Button;
+		buttonSaveInputs: Button;
+	} & any;
+
     init() {
         const loadFile = async (e: MouseEvent) => {
             const data = getFormData<Record<string, File>>(e);
@@ -24,7 +31,6 @@ export class EditProfile extends Block {
 
                 await ProfileController.changeAvatar(formData);
 
-                // @ts-ignore
                 this.children.avatarImg.setProps({ path: this.props.avatar });
             }
         };
