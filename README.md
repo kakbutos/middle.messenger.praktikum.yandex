@@ -22,7 +22,7 @@ npm run prepare - прекоммит хуки
 
 [Профиль](https://dapper-semolina-4957ab.netlify.app/profile)
 
-[Чат](https://dapper-semolina-4957ab.netlify.app/chat)
+[Чат](https://dapper-semolina-4957ab.netlify.app/messenger)
 
 [Регистрация](https://dapper-semolina-4957ab.netlify.app/sign-up)
 
