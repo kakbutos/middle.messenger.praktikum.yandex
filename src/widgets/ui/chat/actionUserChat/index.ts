@@ -7,6 +7,7 @@ import ProfileController from '@/controllers/user/profileController';
 import { User } from '@/types/auth/auth';
 import store from '@/common/store/store';
 import ChatsController from '@/controllers/chats/chatsController';
+import { getFormData } from '@/common/form/getFormData';
 
 export class ActionUserChat extends Block<
 	Chats & { events: { click: () => void; }, closeModalAction: Modal }
@@ -14,24 +15,24 @@ export class ActionUserChat extends Block<
     public modal: Modal | undefined;
 
     constructor(props: any) {
+        const state = store.getState();
+        const chatId = state.chats?.activeIdChat;
+
         const action = (e: MouseEvent) => {
             const el = e.target as HTMLElement;
             const type = el.getAttribute('data-type');
-            const typeRemove = type === 'remove';
 
+            // добавление и удалене пользователя
             const actionModal = new ActionModal({
                 name: 'Логин пользователя',
-                action: async (value: string) => {
+                action: async (value) => {
                     if (value) {
                         // находим по логину id пользователя
                         const userArray = await ProfileController.getUserByLogin({
-                            login: value,
+                            login: value as string,
                         }) as User[];
 
                         const user = userArray?.filter((item: User) => item.login === value)[0];
-                        // добавляем в чат по айди
-                        const state = store.getState();
-                        const chatId = state.chats?.activeIdChat;
 
                         if (!chatId) {
                             return;
@@ -42,9 +43,9 @@ export class ActionUserChat extends Block<
                             chatId,
                         };
 
-                        if (typeRemove) {
+                        if (type === 'delete-user') {
                             await ChatsController.removeUserFromChat(data);
-                        } else {
+                        } else if (type === 'add-user') {
                             await ChatsController.addUserInChat(data);
                             await ChatsController.getUsersFromChat();
                         }
@@ -54,9 +55,64 @@ export class ActionUserChat extends Block<
                 },
             });
 
+            // загрузка аватарки
+            const actionModalLoadAvatar = new ActionModal({
+                action: async (event) => {
+                    const data = getFormData<Record<string, File>>(event as MouseEvent);
+
+                    if (data && data.add && chatId) {
+                        const formData = new FormData();
+                        formData.append('avatar', data.add as File);
+                        formData.append('chatId', chatId as unknown as Blob);
+
+                        await ChatsController.loadAvatarChat(formData);
+                    }
+
+                    this.modal?.remove();
+                },
+                typeInput: 'file',
+                btnName: 'Загрузить',
+            });
+
+            const actionModalDeleteChat = new ActionModal({
+                action: async () => {
+                    if (chatId) {
+                        await ChatsController.deleteChat({ chatId });
+                    }
+
+                    this.modal?.remove();
+                },
+                btnName: 'Удалить',
+                hideInput: true,
+            });
+
+            let childrenItem;
+            let titleItem;
+
+            switch (type) {
+            case 'add-user':
+                childrenItem = actionModal;
+                titleItem = 'Добавить пользователя';
+                break;
+            case 'delete-user':
+                childrenItem = actionModal;
+                titleItem = 'Удалить пользователя';
+                break;
+            case 'load-avatar':
+                childrenItem = actionModalLoadAvatar;
+                titleItem = 'Загрузить аватарку';
+                break;
+            case 'delete-chat':
+                childrenItem = actionModalDeleteChat;
+                titleItem = 'Удалить текущий чат';
+                break;
+            default:
+                break;
+            }
+
             this.modal = new Modal({
-                title: typeRemove ? 'Удалить пользователя из чата' : 'Добавить пользователя в чат',
-                children: actionModal,
+                title: titleItem,
+                children: childrenItem,
                 closeIcon: true,
             });
 

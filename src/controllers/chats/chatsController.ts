@@ -20,7 +20,7 @@ class ChatsController {
         try {
             const chats = await this.api.getChats(data);
 
-            store.set('chats.list', chats);
+            store.set('chats.list', chats, true);
         } catch (error) {
             /* eslint-disable-next-line no-console */
             console.error(error);
@@ -96,6 +96,36 @@ class ChatsController {
             store.set('chats.chatSocket', WSClient, true);
 
             WSClient.getMessages('0');
+        } catch (error) {
+            /* eslint-disable-next-line no-console */
+            console.error(error);
+        }
+    }
+
+    async loadAvatarChat(data: FormData) {
+        try {
+            const chatItem = await this.api.loadAvatarChat(data);
+            const { chats } = store.getState();
+            const list = chats?.list.map((item) => {
+                if (chats?.activeIdChat === item.id) {
+                    return { ...item, ...chatItem };
+                }
+                return item;
+            });
+
+            store.set('chats.list', list);
+        } catch (error) {
+            /* eslint-disable-next-line no-console */
+            console.error(error);
+        }
+    }
+
+    async deleteChat(data: {chatId: number}) {
+        try {
+            await this.api.deleteChat(data);
+            const { chats } = store.getState();
+            const list = chats?.list.filter((item) => item.id !== data.chatId);
+            store.set('chats.list', list, true);
         } catch (error) {
             /* eslint-disable-next-line no-console */
             console.error(error);

@@ -16,9 +16,9 @@ export class Chat extends Block {
     public modal: Modal | undefined;
 
     async init() {
-        const addChat = async (value: string) => {
+        const addChat = async (value: unknown) => {
             if (value) {
-                await ChatsController.createChat(value);
+                await ChatsController.createChat(value as string);
                 await ChatsController.getChats({ offset: 0, limit: 15 });
 
                 this.modal?.remove();

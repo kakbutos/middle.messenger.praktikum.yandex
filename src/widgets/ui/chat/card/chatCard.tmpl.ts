@@ -1,7 +1,7 @@
 export const tmpl = `
     <li class="chat-card {{#if isActive }}active{{/if}}">
         <div class="chat-card__icon">
-        	<img src="{{avatar}}" alt="avatar">
+        	{{{imageCard}}}
         </div>
         <div class="chat-card__msg-content">
             <div class="msg-content__name chat__title">{{title}}</div>

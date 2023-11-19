@@ -1,12 +1,14 @@
 import { tmpl } from './actionModal.tmpl';
 import Block from '@/common/block/block';
-import { Input } from '@/components/ui/input';
+import { Input, InputType } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 interface Props {
 	name?: string;
 	btnName?: string;
-	action?: (value: string) => void;
+	action?: (value: unknown) => void;
+	typeInput?: InputType;
+	hideInput?: boolean;
 }
 
 export class ActionModal extends Block<Props> {
@@ -16,20 +18,22 @@ export class ActionModal extends Block<Props> {
 	};
 
     init() {
-        const btnAction = () => {
-            const { value } = this.children.inputComponent;
+        const btnAction = (e: MouseEvent) => {
+            const value = this.children?.inputComponent?.value;
 
             if (this.props.action) {
-                this.props.action(value);
+                this.props.action(this.props.typeInput === 'file' ? e : value);
             }
         };
 
-        this.children.inputComponent = new Input({
-            type: 'text',
-            placeholder: this.props.name,
-            name: 'add',
-            classNames: 'input_gray',
-        });
+        if (!this.props.hideInput) {
+            this.children.inputComponent = new Input({
+                type: this.props.typeInput || 'text',
+                placeholder: this.props.name,
+                name: 'add',
+                classNames: 'input_gray',
+            });
+        }
 
         this.children.buttonAction = new Button({
             text: this.props.btnName || 'Добавить',

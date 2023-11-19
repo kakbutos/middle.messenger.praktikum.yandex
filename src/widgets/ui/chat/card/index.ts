@@ -2,8 +2,16 @@ import { tmpl } from './chatCard.tmpl';
 import Block from '@/common/block/block';
 import store, { State, withStore } from '@/common/store/store';
 import { getTime } from '@/common/helpers/date';
+import { Images } from '@/components/ui/images';
 
 export class ChatCard extends Block {
+    init() {
+        this.children.imageCard = new Images({
+            path: this.props.avatar,
+            alt: 'avatar',
+        });
+    }
+
     render() {
         const state = store.getState();
 

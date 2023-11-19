@@ -32,7 +32,7 @@ export class Images extends Block<ImageProps> {
             ...this.props,
             src: this.props.src
                 ? this.props.src
-                : `${API_URL}/resources${this.props.path}`,
+                : (this.props.path ? `${API_URL}/resources${this.props.path}` : ''),
         });
     }
 }

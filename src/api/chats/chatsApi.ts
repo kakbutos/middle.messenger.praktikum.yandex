@@ -30,4 +30,12 @@ export class ChatsApi extends API {
     getUsersFromChat(chatId: number): Promise<ChatsUser[]> {
         return this.http.get(`/${chatId}/users`);
     }
+
+    loadAvatarChat(data: FormData): Promise<Chats> {
+        return this.http.put('/avatar', { data });
+    }
+
+    deleteChat(data: {chatId: number}) {
+        return this.http.delete('', { data });
+    }
 }
