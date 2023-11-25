@@ -24,16 +24,16 @@ describe('Route', () => {
 	});
 
 	it('не должен отображать блок, если он уже обработан', () => {
-		route['block'] = block; // Используем прямой доступ к приватному полю block
+		route['block'] = block;
 		const renderStub = sinon.stub(route, 'render');
 		route.render();
 		assert.isTrue(renderStub.calledOnce);
 	});
 
 	it('должен установить блок на null при уходе', () => {
-		route['block'] = block; // Используем прямой доступ к приватному полю block
+		route['block'] = block;
 		route.leave();
-		assert.isNull(route['block']); // Используем прямой доступ к приватному полю block
+		assert.isNull(route['block']);
 	});
 
 	it('должен выдавать ошибку, если корневой элемент не найден', () => {
