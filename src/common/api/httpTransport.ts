@@ -1,19 +1,8 @@
 import { METHODS, Options } from '.';
 import { API_URL } from '@/app/global';
+import { queryStringify } from '@/common/helpers/query';
 
 type HTTPMethod = <R=unknown>(url: string, options?: Options) => Promise<R>;
-
-const queryStringify = (data: undefined | Record<string, unknown>) => {
-    if (typeof data !== 'object') {
-        throw new Error('Data must be object');
-    }
-
-    const keys = Object.keys(data);
-
-    return keys.reduce((result, key, index) => {
-        return `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`;
-    }, '?');
-};
 
 class HTTPTransport {
     protected endpoint: string;
@@ -22,7 +11,7 @@ class HTTPTransport {
         this.endpoint = `${API_URL}${endpoint}`;
     }
 
-    get: HTTPMethod = (path: string, options: Options = {}) => {
+    get: HTTPMethod = (path, options = {}) => {
         let url = `${this.endpoint}${path}`;
 
         if (options && !!options.data) {
@@ -35,28 +24,28 @@ class HTTPTransport {
         }, options.timeout);
     };
 
-    post: HTTPMethod = (path: string, options: Options = {}) => {
+    post: HTTPMethod = (path, options = {}) => {
         return this.request(`${this.endpoint}${path}`, {
             ...options,
             method: METHODS.POST,
         }, options.timeout);
     };
 
-    put: HTTPMethod = (path: string, options: Options = {}) => {
+    put: HTTPMethod = (path, options = {}) => {
         return this.request(`${this.endpoint}${path}`, {
             ...options,
             method: METHODS.PUT,
         }, options.timeout);
     };
 
-    patch: HTTPMethod = (path: string, options: Options = {}) => {
+    patch: HTTPMethod = (path, options = {}) => {
         return this.request(`${this.endpoint}${path}`, {
             ...options,
             method: METHODS.Patch,
         }, options.timeout);
     };
 
-    delete: HTTPMethod = (path: string, options: Options = {}) => {
+    delete: HTTPMethod = (path, options = {}) => {
         return this.request(`${this.endpoint}${path}`, {
             ...options,
             method: METHODS.DELETE,
