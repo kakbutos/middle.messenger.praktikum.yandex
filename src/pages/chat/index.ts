@@ -1,29 +1,72 @@
 import { tmpl } from './chat.tmpl';
 import { Link } from '@/components/ui/link';
 import { Input } from '@/components/ui/input';
-import { ChatCard } from '@/widgets/ui/chat/card';
-import { ChatHeader } from '@/widgets/ui/chat/header';
-import { ChatMsg } from '@/widgets/ui/chat/msg/chatMsg';
+import { chatHeader } from '@/widgets/ui/chat/header';
 import { ChatInput } from '@/widgets/ui/chat/msg/chatInput';
 import Block from '@/common/block/block';
+import { Button } from '@/components/ui/button';
+import { Modal } from '@/components/ui/modal';
+import { ActionModal } from '@/widgets/ui/chat/actionModal';
+import ChatsController from '@/controllers/chats/chatsController';
+import { State, withStore } from '@/common/store/store';
+import { CardList } from '@/widgets/ui/chat/cardList';
+import { chatListMsg } from '@/widgets/ui/chat/msg/chatListMsg';
 
 export class Chat extends Block {
-    init() {
-        this.children.profileLink = new Link({ to: '/profile', text: 'Профиль', classNames: 'link link_gray' });
+    public modal: Modal | undefined;
+
+    async init() {
+        const addChat = async (value: unknown) => {
+            if (value) {
+                await ChatsController.createChat(value as string);
+                await ChatsController.getChats({ offset: 0, limit: 15 });
+
+                this.modal?.remove();
+            }
+        };
+
+        const openPopupForAddChat = () => {
+            const actionModal = new ActionModal({
+                name: 'Название чата',
+                action: addChat,
+            });
+
+            this.modal = new Modal({
+                title: 'Добавить чат',
+                children: actionModal,
+                closeIcon: true,
+            });
+
+            this.modal.show();
+        };
+
+        const loadChats = async () => {
+            await ChatsController.getChats({ offset: 0, limit: 15 });
+        };
+
+        loadChats().then(() => {});
+
+        this.children.cardList = new CardList({});
+        this.children.profileLink = new Link({
+            to: '/profile',
+            text: 'Профиль',
+            classNames: 'link link_gray',
+        });
+
         this.children.searchInput = new Input({
-            type: 'text', classNames: 'input_gray', placeholder: 'Поиск', name: 'search',
+            type: 'text',
+            classNames: 'input_gray',
+            placeholder: 'Поиск',
+            name: 'search',
         });
-        this.children.card = new ChatCard({
-            icon: '',
-            name: 'Андрей',
-            text: 'Друзья, у меня для вас особенный выпуск новостей! gfgdfgdfgdg dg fdg d gdf dfg 453 535 345 353 sg ldfgfk gds gkfdslg skg dfl gkf gl dskg  sfdfsf sdfsdfs sfdsfsd',
-            time: '10:59',
-            countMsg: '21',
+        this.children.buttonAddChat = new Button({
+            text: 'Добавить чат',
+            classNames: 'button button_blue button-text_white',
+            events: { click: openPopupForAddChat },
         });
-        this.children.chatHeader = new ChatHeader({ icon: '', iconName: 'avatar', name: 'Вадим' });
-        this.children.chatList = new ChatMsg({
-            text: 'Привет', time: '11:56', img: '', fromYouMsg: false,
-        });
+
+        this.children.chatHeader = new chatHeader({});
+        this.children.chatList = new chatListMsg({});
         this.children.chatInput = new ChatInput({});
     }
 
@@ -31,3 +74,9 @@ export class Chat extends Block {
         return this.compile(tmpl, this.props);
     }
 }
+
+const mapStateToProps = (state: State) => {
+    return { chats: state.chats };
+};
+
+export const chat = withStore(mapStateToProps)(Chat);

@@ -5,10 +5,12 @@ export const METHODS = {
     GET: 'GET',
     POST: 'POST',
     PUT: 'PUT',
+    Patch: 'Patch',
     DELETE: 'DELETE',
 } as const;
 
 export interface Options {
+	responseType?: '' | 'arraybuffer' | 'blob' | 'document' | 'json' | 'text';
 	timeout?: number;
 	data?: any;
 	headers?: Record<string, string>;

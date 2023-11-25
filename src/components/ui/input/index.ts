@@ -1,7 +1,7 @@
 import { tmpl } from './input.tmpl';
 import Block from '@/common/block/block';
 
-type InputType = 'email' | 'text' | 'number' | 'password' | 'tel';
+export type InputType = 'email' | 'text' | 'number' | 'password' | 'tel' | 'file';
 
 export interface InputProps {
     classNames?: string;
@@ -26,6 +26,12 @@ export class Input extends Block<InputProps> {
         this.setProps(newProps);
 
         return hasError;
+    }
+
+    get value(): string {
+        const inputEl = this.getContent() as HTMLInputElement;
+
+        return inputEl ? inputEl.value : this.props.value || '';
     }
 
     render() {

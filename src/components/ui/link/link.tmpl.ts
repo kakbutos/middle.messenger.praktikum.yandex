@@ -1,6 +1,5 @@
 export const tmpl = `
-    <a  class="{{classNames}}"
-        href="{{to}}">
+    <a  class="{{classNames}}">
         {{text}}
     </a>
 `;

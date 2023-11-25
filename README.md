@@ -22,9 +22,9 @@ npm run prepare - прекоммит хуки
 
 [Профиль](https://dapper-semolina-4957ab.netlify.app/profile)
 
-[Чат](https://dapper-semolina-4957ab.netlify.app/chat)
+[Чат](https://dapper-semolina-4957ab.netlify.app/messenger)
 
-[Регистрация](https://dapper-semolina-4957ab.netlify.app/reg)
+[Регистрация](https://dapper-semolina-4957ab.netlify.app/sign-up)
 
 [Авторизация](https://dapper-semolina-4957ab.netlify.app/login)
 
@@ -32,7 +32,7 @@ npm run prepare - прекоммит хуки
 
 [Смена пароля](https://dapper-semolina-4957ab.netlify.app/changePassword)
 
-[Редактирование профиля](https://dapper-semolina-4957ab.netlify.app/changeProfile)
+[Редактирование профиля](https://dapper-semolina-4957ab.netlify.app/settings)
 
 [Страница не найдена](https://dapper-semolina-4957ab.netlify.app/notFound)
 

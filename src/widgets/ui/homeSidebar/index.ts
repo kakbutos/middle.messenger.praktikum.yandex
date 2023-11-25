@@ -4,7 +4,11 @@ import Block from '@/common/block/block';
 
 export class HomeSidebar extends Block {
     init() {
-        this.children.linkToHome = new Link({ text: 'Вернуться', to: '/chat', classNames: 'link link_blue' });
+        this.children.linkToHome = new Link({
+            text: 'Вернуться',
+            to: '/messenger',
+            classNames: 'link link_blue',
+        });
     }
 
     render() {

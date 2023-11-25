@@ -6,6 +6,9 @@ import {
     emailReg, loginReg, nameReg, passwordReg, phoneReg,
 } from '@/common/form/regexp';
 import { InputWrapper } from '@/widgets/ui/inputControls';
+import AuthController from '@/controllers/auth/authController';
+import { SignUpData } from '@/types/auth/auth';
+import { State, withStore } from '@/common/store/store';
 
 export class ModalRegContent extends Block {
     constructor(props = {}) {
@@ -19,11 +22,18 @@ export class ModalRegContent extends Block {
 		lastName: InputWrapper,
 		tel: InputWrapper,
 		password: InputWrapper,
-		passwordRepeat: InputWrapper,
 		button: Button
 	};
 
     init() {
+        const registration = async (e: MouseEvent) => {
+            const data = getFormData<SignUpData>(e);
+
+            if (data) {
+                await AuthController.registerUser(data);
+            }
+        };
+
         this.children.address = new InputWrapper({
             input: {
                 type: 'email', classNames: 'auth-form__input', name: 'email', checkValidFunc: emailReg,
@@ -54,13 +64,8 @@ export class ModalRegContent extends Block {
                 type: 'password', classNames: 'auth-form__input', name: 'password', checkValidFunc: passwordReg,
             },
         });
-        this.children.passwordRepeat = new InputWrapper({
-            input: {
-                type: 'password', classNames: 'auth-form__input', name: 'repeatPassword', checkValidFunc: passwordReg,
-            },
-        });
         this.children.button = new Button({
-            type: 'submit', text: 'Зарегистрироваться', classNames: 'button button_blue button-text_white', events: { click: getFormData },
+            type: 'submit', text: 'Зарегистрироваться', classNames: 'button button_blue button-text_white', events: { click: registration },
         });
     }
 
@@ -68,3 +73,11 @@ export class ModalRegContent extends Block {
         return this.compile(tmpl, this.props);
     }
 }
+
+const mapStateToProps = (state: State) => {
+    return {
+        user: state?.user,
+    };
+};
+
+export const modalRegContent = withStore(mapStateToProps)(ModalRegContent);

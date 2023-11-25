@@ -1,23 +1,35 @@
 import { Main } from '@/pages/main';
-import { Profile } from '@/pages/profile';
-import { Chat } from '@/pages/chat';
+import { profile } from '@/pages/profile';
+import { chat } from '@/pages/chat';
 import { Reg } from '@/pages/reg';
 import { Login } from '@/pages/login';
 import { NotFound } from '@/pages/errors/notFound';
 import { ServerError } from '@/pages/errors/serverError';
-import { EditProfile } from '@/pages/editProfile';
-import { EditPassword } from '@/pages/editPassword';
+import { editProfile } from '@/pages/editProfile';
+import { editPassword } from '@/pages/editPassword';
+import Block from '@/common/block/block';
+/* eslint-disable */
+export enum ROUTES {
+	Main = '/',
+	Profile = '/profile',
+	Chat = '/messenger',
+	Reg = '/sign-up',
+	Login = '/login',
+	ServerError = '/serverError',
+	EditPassword = '/changePassword',
+	EditProfile = '/settings',
+	NotFound = '/notFound',
+}
+/* eslint-enable */
 
-type Routes = Record<string, any>;
-
-export const ROUTES: Routes = {
-    '/': Main,
-    '/profile': Profile,
-    '/chat': Chat,
-    '/reg': Reg,
-    '/login': Login,
-    '/serverError': ServerError,
-    '/changePassword': EditPassword,
-    '/changeProfile': EditProfile,
-    '/notFound': NotFound,
+export const RoutesBlocks: Record<string, typeof Block> = {
+    Main,
+    Profile: profile,
+    Chat: chat,
+    Reg,
+    Login,
+    ServerError,
+    EditPassword: editPassword,
+    EditProfile: editProfile,
+    NotFound,
 };

@@ -2,23 +2,9 @@ export const tmpl = `
     <div class="chat">
         <aside class="chat__sidebar">
             {{{profileLink}}}
+            {{{buttonAddChat}}}
             {{{searchInput}}}
-            <ul class="chat-card__list">
-                {{{card}}}
-                {{{card}}}
-                {{{card}}}
-                {{{card}}}
-                {{{card}}}
-                {{{card}}}
-                {{{card}}}
-                {{{card}}}
-                {{{card}}}
-                {{{card}}}
-                {{{card}}}
-                {{{card}}}
-                {{{card}}}
-                {{{card}}}
-            </ul>
+			{{{cardList}}}
         </aside>
 
         <main class="chat__content">

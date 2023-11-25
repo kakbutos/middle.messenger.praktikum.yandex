@@ -91,6 +91,7 @@
         padding: 12px 0;
         cursor: pointer;
 
+		&.active,
         &:hover {
             background-color: @blue-light;
             padding-left: 10px;
@@ -203,7 +204,7 @@
         }
 
         &__name {
-            margin-left: 10px;
+            margin: 0 10px;
         }
 
         &__action {
@@ -219,6 +220,14 @@
                 border-radius: 100%;
             }
         }
+
+		&__list {
+			display: flex;
+
+			li {
+				padding: 0 5px;
+			}
+		}
     }
 
     .chat-msg {
@@ -228,6 +237,12 @@
         height: calc(100vh - 119px);
         margin-top: 20px;
         overflow: auto;
+
+		&__ghost {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+		}
 
         &__list {
             overflow: auto;
@@ -336,4 +351,33 @@
             flex: 1;
         }
     }
+
+	.modal-content {
+		display: flex;
+		flex-direction: column;
+
+		&__form {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__text {
+			margin-bottom: 15px;
+		}
+
+		.input {
+			margin-bottom: 15px;
+		}
+	}
+
+	.list-action-user {
+		li {
+			cursor: pointer;
+			margin-bottom: 10px;
+
+			&:hover {
+				opacity: 0.5;
+			}
+		}
+	}
 }

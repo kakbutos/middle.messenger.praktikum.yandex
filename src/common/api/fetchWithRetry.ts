@@ -5,7 +5,7 @@ export const fetchWithRetry = (
     url: string,
     options: Options = {},
 ): Promise<XMLHttpRequest | unknown> => {
-    const instance = new HTTPTransport();
+    const instance = new HTTPTransport('');
 
     const { tries = 1 } = options;
 

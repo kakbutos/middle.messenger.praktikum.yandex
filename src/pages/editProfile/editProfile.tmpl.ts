@@ -1,34 +1,38 @@
 export const tmpl = `
     <main class="profile profile-edit">
-        <img class="profile-edit__img" src="" alt="avatar">
+        <form class="profile-edit__form-img">
+			{{{avatarImg}}}
+        	{{{avatarComponent}}}
+        	{{{buttonFile}}}
+		</form>
 
         <form class="profile__list">
             <div class="profile__item">
                 <label class="profile__name">Почта</label>
-                {{{email}}}
+                {{{emailComponent}}}
             </div>
             <div class="profile__item">
                 <label class="profile__name">Логин</label>
-                {{{login}}}
+                {{{loginComponent}}}
             </div>
             <div class="profile__item">
                 <label class="profile__name">Имя</label>
-                {{{firstName}}}
+                {{{firstNameComponent}}}
             </div>
             <div class="profile__item">
                 <label class="profile__name">Фамилия</label>
-                {{{lastName}}}
+                {{{secondNameComponent}}}
             </div>
             <div class="profile__item">
                 <label class="profile__name">Имя в чате</label>
-                {{{name}}}
+                {{{displayNameComponent}}}
             </div>
             <div class="profile__item">
                 <label class="profile__name">Телефон</label>
-                {{{tel}}}
+                {{{phoneComponent}}}
             </div>
 
-			{{{button}}}
+			{{{buttonSaveInputs}}}
         </form>
     </>
 

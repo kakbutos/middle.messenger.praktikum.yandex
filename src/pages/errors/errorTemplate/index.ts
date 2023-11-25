@@ -9,7 +9,11 @@ interface Props {
 
 export class ErrorTemplate extends Block<Props> {
     init() {
-        this.children.link = new Link({ to: '/chat', text: 'Назад к чатам', classNames: 'link link_blue' });
+        this.children.link = new Link({
+            to: '/messenger',
+            text: 'Назад к чатам',
+            classNames: 'link link_blue',
+        });
     }
 
     render() {

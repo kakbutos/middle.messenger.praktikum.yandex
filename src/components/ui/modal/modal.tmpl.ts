@@ -1,9 +1,10 @@
 export const tmpl = `
-    <main class="modal {{classNames}}">
+    <div class="modal {{classNames}}">
+    	{{#if closeIcon}}<span class="modal__close">X</span>{{/if}}
         <div class="modal__inner">
-            <span class="modal__title">{{title}}</span>
+            {{#if title}}<span class="modal__title">{{title}}</span>{{/if}}
             {{{children}}}
-            {{{LinkElement}}}
+            {{#if LinkElement}}{{{LinkElement}}}{{/if}}
         </div>
-    </main>
+    </div>
 `;
