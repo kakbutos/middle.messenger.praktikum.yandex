@@ -12,7 +12,7 @@
     "lint:less": "npx stylelint \"**/*.less\"",
     "lint:less:fix": "npx stylelint \"**/*.less\" --fix",
     "prepare": "husky install",
-    "unit:test": "mocha --require ts-node/register --require tsconfig-paths/register --require ./mochaSetup.cjs './src/**/*.test.ts'"
+    "test": "mocha --require ts-node/register --require tsconfig-paths/register --require ./mochaSetup.cjs './src/**/*.test.ts'"
   },
   "engines": {
     "node": ">=18.3.0"

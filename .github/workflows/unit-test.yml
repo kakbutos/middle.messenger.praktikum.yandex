@@ -20,4 +20,4 @@ jobs:
       - name: install modules
         run: npm ci --force
       - name: unit test
-        run: npm run unit:test
+        run: npm run test
