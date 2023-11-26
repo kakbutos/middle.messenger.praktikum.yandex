@@ -48,18 +48,4 @@ describe('Router', () => {
 
         assert.strictEqual(window.location.pathname, '/message');
     });
-
-    // it('переход на страницу назад', () => {
-    //     Router
-    //         .use('/', mainPage)
-    //         .use('/message', messagePage)
-    //         .start();
-    //
-    //     Router.go('/message');
-    //     Router.back();
-    //
-    //     setTimeout(() => {
-    //         assert.strictEqual(window.location.pathname, '/');
-    //     }, 10);
-    // });
 });
